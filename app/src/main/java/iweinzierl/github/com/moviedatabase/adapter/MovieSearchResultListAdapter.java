@@ -55,14 +55,14 @@ public class MovieSearchResultListAdapter extends BaseListAdapter<Movie> {
 
             loadImage(movie.getCover(), cover);
             title.setText(movie.getTitle());
-            description.setText(movie.getDescription());
+            description.setText(createShortDescription(movie.getDescription()));
 
             view.setTag(holder);
         } else {
             ViewHolder holder = (ViewHolder) view.getTag();
             loadImage(movie.getCover(), holder.cover);
             holder.title.setText(movie.getTitle());
-            holder.description.setText(movie.getDescription());
+            holder.description.setText(createShortDescription(movie.getDescription()));
         }
 
         return view;
@@ -71,5 +71,14 @@ public class MovieSearchResultListAdapter extends BaseListAdapter<Movie> {
     private void loadImage(String imageUri, ImageView imageView) {
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage(imageUri, imageView);
+    }
+
+    private String createShortDescription(String description) {
+        if (description == null || description.length() < 200) {
+            return description;
+        }
+
+        int spacePosition = description.indexOf(" ", 195);
+        return String.format("%s ...", description.substring(0, spacePosition));
     }
 }
