@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -24,6 +25,8 @@ public class SearchMovieFragment extends Fragment {
 
     public interface Callback {
         void onStartSearch(String search);
+
+        void onMovieClicked(Movie movie);
     }
 
     private Callback callback;
@@ -41,6 +44,15 @@ public class SearchMovieFragment extends Fragment {
 
         ListView searchResults = UiUtils.getGeneric(ListView.class, root, R.id.search_results);
         searchResults.setAdapter(searchResultsAdapter);
+        searchResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Movie movie = searchResultsAdapter.getTypedItem(i);
+                if (callback != null) {
+                    callback.onMovieClicked(movie);
+                }
+            }
+        });
 
         Button searchButton = UiUtils.getGeneric(Button.class, root, R.id.search_button);
         searchButton.setOnClickListener(new View.OnClickListener() {

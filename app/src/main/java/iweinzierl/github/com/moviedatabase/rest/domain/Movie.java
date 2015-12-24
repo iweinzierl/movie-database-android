@@ -1,5 +1,7 @@
 package iweinzierl.github.com.moviedatabase.rest.domain;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.joda.time.LocalDate;
 
 import java.util.Set;
@@ -9,12 +11,16 @@ public class Movie {
     private String id;
 
     private String title;
+
+    @SerializedName("originalTitle")
     private String originalTitle;
 
     private String description;
     private String cover;
     private Set<String> genres;
     private int length;
+
+    @SerializedName("publishDate")
     private LocalDate publishDate;
 
     public String getId() {

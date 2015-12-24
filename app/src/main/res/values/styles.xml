@@ -1,7 +1,6 @@
 <resources>
 
-    <style name="MyTheme" parent="Theme.AppCompat.NoActionBar">
-    </style>
+    <style name="MyTheme" parent="Theme.AppCompat.NoActionBar"></style>
 
     <style name="MyTheme.Toolbar">
         <item name="android:background">@color/colorPrimary</item>
@@ -65,4 +64,37 @@
         <item name="android:paddingRight">0dp</item>
     </style>
 
+    <style name="MyTheme.MovieDetail">
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">0dp</item>
+    </style>
+
+    <style name="MyTheme.MovieDetail.Cover">
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+    </style>
+
+    <style name="MyTheme.MovieDetail.Text">
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="MyTheme.MovieDetail.Text.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="MyTheme.MovieDetail.Text.Description">
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

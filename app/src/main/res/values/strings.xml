@@ -11,4 +11,5 @@
     <string name="moviesearch_search_field_hint">Search Text</string>
 
     <string name="task_search_movie_error_message">Unknown Error while searching for movie: %s</string>
+    <string name="task_get_search_movie_error_message">Unknown Error while loading searched movie: %s</string>
 </resources>

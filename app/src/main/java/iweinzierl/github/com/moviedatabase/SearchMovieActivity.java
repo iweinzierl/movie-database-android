@@ -1,5 +1,6 @@
 package iweinzierl.github.com.moviedatabase;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.List;
@@ -42,5 +43,13 @@ public class SearchMovieActivity extends BaseActivity implements SearchMovieFrag
                 });
             }
         }.execute(search);
+    }
+
+    @Override
+    public void onMovieClicked(Movie movie) {
+        Intent intent = new Intent(this, MovieDetailActivity.class);
+        intent.putExtra(MovieDetailActivity.EXTRA_MOVIE_ID, movie.getId());
+
+        startActivity(intent);
     }
 }
