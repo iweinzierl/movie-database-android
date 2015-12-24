@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MovieDatabase</string>
+
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_search_movie">Movie Search</string>
+
+    <string name="dashboard_title">Dashboard</string>
+
+    <string name="moviesearch_title">Movie Search</string>
+    <string name="moviesearch_search_button">Movie Search</string>
+
+    <string name="task_search_movie_error_message">Unknown Error while searching for movie: %s</string>
+</resources>
