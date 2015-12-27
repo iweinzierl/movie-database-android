@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">MovieDatabase</string>
 
+    <string name="nav_header_app_version">App Version: </string>
     <string name="nav_dashboard">Dashboard</string>
     <string name="nav_search_movie">Movie Search</string>
 
     <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_label_number_of_movies">Number of Movies:</string>
+    <string name="dashboard_label_number_of_genres">Number of Genres:</string>
+    <string name="dashboard_label_number_of_lent_movies">Number of Movies (lent):</string>
 
     <string name="moviesearch_title">Movie Search</string>
     <string name="moviesearch_search_button">Search</string>
@@ -19,4 +23,5 @@
     <string name="task_get_search_movie_error_message">Unknown Error while loading searched movie: %s</string>
     <string name="task_save_movie_error_message">Unknown Error while saving movie: %s</string>
     <string name="task_delete_movie_error_message">Unknown Error while deleting movie: %s</string>
+    <string name="task_get_statistics_error_message">Unknown Error while fetching statistics: %s</string>
 </resources>

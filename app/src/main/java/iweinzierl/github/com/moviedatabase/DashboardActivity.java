@@ -1,13 +1,45 @@
 package iweinzierl.github.com.moviedatabase;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class DashboardActivity extends AppCompatActivity {
+import iweinzierl.github.com.moviedatabase.async.GetStatisticsTask;
+import iweinzierl.github.com.moviedatabase.fragment.StatisticsFragment;
+import iweinzierl.github.com.moviedatabase.rest.domain.Statistics;
+
+public class DashboardActivity extends BaseActivity {
+
+    private StatisticsFragment statisticsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
+
+        statisticsFragment = new StatisticsFragment();
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content, statisticsFragment)
+                .commit();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+        new GetStatisticsTask(this) {
+            @Override
+            protected void onPostExecute(Statistics statistics) {
+                setStatistics(statistics);
+            }
+        }.execute();
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_base;
+    }
+
+    private void setStatistics(Statistics statistics) {
+        statisticsFragment.setStatistics(statistics);
     }
 }

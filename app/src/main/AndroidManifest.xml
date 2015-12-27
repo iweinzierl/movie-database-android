@@ -11,7 +11,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
-        <activity android:name=".SearchMovieActivity">
+        <activity
+            android:name=".DashboardActivity"
+            android:label="@string/dashboard_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +21,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".DashboardActivity" />
+        <activity
+            android:name=".SearchMovieActivity"
+            android:label="@string/moviesearch_title" />
         <activity android:name=".MovieDetailActivity" />
         <activity android:name=".SearchMovieDetailActivity" />
     </application>

@@ -15,36 +15,36 @@ import java.io.IOException;
 import iweinzierl.github.com.moviedatabase.R;
 import iweinzierl.github.com.moviedatabase.rest.ClientFactory;
 import iweinzierl.github.com.moviedatabase.rest.client.BackendClient;
-import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
+import iweinzierl.github.com.moviedatabase.rest.domain.Statistics;
 import retrofit.Call;
 
-public class DeleteMovieTask extends AsyncTask<String, Void, Movie> {
+public class GetStatisticsTask extends AsyncTask<Void, Void, Statistics> {
 
     private static final Logger LOG = AndroidLoggerFactory.getInstance()
-            .getLogger(DeleteMovieTask.class.getName(), "[async]");
+            .getLogger(GetStatisticsTask.class.getName(), "[async]");
 
     private final Context context;
 
-    public DeleteMovieTask(Context context) {
+    public GetStatisticsTask(Context context) {
         this.context = context;
     }
 
     @Override
-    protected Movie doInBackground(String... movieId) {
+    protected Statistics doInBackground(Void... params) {
         BackendClient backendClient = ClientFactory.createBackendClient(context);
-        Call<Movie> deleteCall = backendClient.deleteMovie(movieId[0]);
+        Call<Statistics> statisticsCall = backendClient.getStatistics();
 
         try {
-            return deleteCall.execute().body();
+            return statisticsCall.execute().body();
         } catch (final IOException e) {
-            LOG.error("Error while deleting movie: {}", movieId[0], e);
+            LOG.error("Error while fetching statistics", e);
             Looper mainLooper = Looper.getMainLooper();
             new Handler(mainLooper).post(new Runnable() {
                 @Override
                 public void run() {
                     Toast.makeText(
                             context,
-                            context.getString(R.string.task_delete_movie_error_message, e.getMessage()),
+                            context.getString(R.string.task_get_statistics_error_message, e.getMessage()),
                             Toast.LENGTH_SHORT)
                             .show();
                 }

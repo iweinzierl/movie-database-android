@@ -32,7 +32,7 @@ public class SaveMovieTask extends AsyncTask<Movie, Void, Movie> {
     @Override
     protected Movie doInBackground(Movie... movie) {
         BackendClient backendClient = ClientFactory.createBackendClient(context);
-        Call<Movie> saveCall = backendClient.save(movie[0]);
+        Call<Movie> saveCall = backendClient.saveMovie(movie[0]);
 
         try {
             return saveCall.execute().body();

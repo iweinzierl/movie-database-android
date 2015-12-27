@@ -1,6 +1,7 @@
 package iweinzierl.github.com.moviedatabase;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,10 +14,16 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.github.iweinzierl.android.logging.AndroidLoggerFactory;
+
+import org.slf4j.Logger;
+
 import iweinzierl.github.com.moviedatabase.navigation.NavigationAdapter;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
+
+    private static final Logger LOG = AndroidLoggerFactory.getInstance().getLogger(BaseActivity.class.getName());
 
     protected DrawerLayout drawerLayout;
 
@@ -36,7 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.navigation_drawer_layout);
         recyclerView = (RecyclerView) findViewById(R.id.navigation_drawer);
-        //recyclerView.setAdapter(new NavigationAdapter(getUsername()));
+        recyclerView.setAdapter(new NavigationAdapter(getUsername(), getVersionName()));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -66,13 +73,27 @@ public abstract class BaseActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
 
             toolbar.setTitle(R.string.dashboard_title);
-            //toolbar.setNavigationIcon(R.drawable.ic_menu_white_36dp);
+            toolbar.setNavigationIcon(R.drawable.ic_menu_white_24dp);
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     drawerLayout.openDrawer(Gravity.LEFT);
                 }
             });
+        }
+    }
+
+    private String getUsername() {
+        return "anonymous";
+    }
+
+    private String getVersionName() {
+        PackageManager packageManager = getPackageManager();
+        try {
+            return packageManager.getPackageInfo(getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            LOG.error("Unable to determine version name", e);
+            return "n/a";
         }
     }
 

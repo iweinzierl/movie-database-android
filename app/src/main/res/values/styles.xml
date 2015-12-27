@@ -1,22 +1,66 @@
 <resources>
 
-    <style name="MyTheme" parent="Theme.AppCompat.NoActionBar"></style>
+    <style name="MyTheme" parent="Theme.AppCompat.NoActionBar" />
 
     <style name="MyTheme.Toolbar">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">56dp</item>
     </style>
 
-    <style name="MyTheme.Toolbar.Item">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+    <style name="MyTheme.Navigation">
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 
-    <style name="MyTheme.Toolbar.Title">
-        <item name="android:layout_width">wrap_content</item>
+    <style name="MyTheme.Navigation.Header">
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="MyTheme.Navigation.Header.Icon">
+        <item name="android:layout_width">64dp</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:layout_gravity">left|center_vertical</item>
+    </style>
+
+    <style name="MyTheme.Navigation.Header.Text">
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="MyTheme.Navigation.Header.Text.Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="MyTheme.Navigation.Header.User">
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="MyTheme.Navigation.Item">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <style name="MyTheme.Navigation.Item.Text">
         <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MyTheme.Navigation.Item.Image">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
     </style>
 
     <style name="MyTheme.ListItem">
