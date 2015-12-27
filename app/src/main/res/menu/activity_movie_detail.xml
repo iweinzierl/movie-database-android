@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/add_to_collection"
+        android:icon="@drawable/ic_add_white_24dp"
+        android:title="@string/moviedetail_menu_add_to_collection"
+        tools:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/remove_from_collection"
+        android:icon="@drawable/ic_clear_white_24dp"
+        android:title="@string/moviedetail_menu_remove_from_collection"
+        tools:showAsAction="ifRoom" />
+
+</menu>

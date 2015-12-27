@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import org.joda.time.LocalDate;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Movie {
@@ -15,13 +16,26 @@ public class Movie {
     @SerializedName("originalTitle")
     private String originalTitle;
 
+    @SerializedName("coverUrl")
+    private String coverUrl;
+
     private String description;
-    private String cover;
+
     private Set<String> genres;
     private int length;
 
-    @SerializedName("publishDate")
-    private LocalDate publishDate;
+    private LocalDate published;
+
+    public Movie(Movie movie) {
+        this.id = movie.getId();
+        this.title = movie.title;
+        this.originalTitle = movie.originalTitle;
+        this.coverUrl = movie.coverUrl;
+        this.description = movie.description;
+        this.genres = new HashSet<>(movie.genres);
+        this.length = movie.length;
+        this.published = movie.published;
+    }
 
     public String getId() {
         return id;
@@ -55,12 +69,12 @@ public class Movie {
         this.description = description;
     }
 
-    public String getCover() {
-        return cover;
+    public String getCoverUrl() {
+        return coverUrl;
     }
 
-    public void setCover(String cover) {
-        this.cover = cover;
+    public void setCoverUrl(String coverUrl) {
+        this.coverUrl = coverUrl;
     }
 
     public Set<String> getGenres() {
@@ -79,11 +93,11 @@ public class Movie {
         this.length = length;
     }
 
-    public LocalDate getPublishDate() {
-        return publishDate;
+    public LocalDate getPublished() {
+        return published;
     }
 
-    public void setPublishDate(LocalDate publishDate) {
-        this.publishDate = publishDate;
+    public void setPublished(LocalDate published) {
+        this.published = published;
     }
 }

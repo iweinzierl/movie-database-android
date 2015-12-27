@@ -45,10 +45,10 @@ public class MovieDetailFragment extends Fragment {
     }
 
     public void setMovie(Movie movie) {
-        loadCover(cover, movie.getCover());
+        loadCover(cover, movie.getCoverUrl());
         title.setText(movie.getTitle());
         originalTitle.setText(movie.getOriginalTitle());
-        publishDate.setText(formatDate(movie.getPublishDate()));
+        publishDate.setText(formatDate(movie.getPublished()));
         length.setText(formatLength(movie.getLength()));
         genres.setText(formatGenres(movie.getGenres()));
         description.setText(movie.getDescription());

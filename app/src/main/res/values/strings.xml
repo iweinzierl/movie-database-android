@@ -10,6 +10,13 @@
     <string name="moviesearch_search_button">Search</string>
     <string name="moviesearch_search_field_hint">Search Text</string>
 
+    <string name="moviedetail_menu_add_to_collection">Add to Collection</string>
+    <string name="moviedetail_menu_remove_from_collection">Remove to Collection</string>
+    <string name="moviedetail_save_movie_successful">Successfully saved movie: %s</string>
+    <string name="moviedetail_delete_movie_successful">Successfully deleted movie: %s</string>
+
     <string name="task_search_movie_error_message">Unknown Error while searching for movie: %s</string>
     <string name="task_get_search_movie_error_message">Unknown Error while loading searched movie: %s</string>
+    <string name="task_save_movie_error_message">Unknown Error while saving movie: %s</string>
+    <string name="task_delete_movie_error_message">Unknown Error while deleting movie: %s</string>
 </resources>

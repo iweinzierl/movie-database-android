@@ -47,7 +47,7 @@ public class SearchMovieActivity extends BaseActivity implements SearchMovieFrag
 
     @Override
     public void onMovieClicked(Movie movie) {
-        Intent intent = new Intent(this, MovieDetailActivity.class);
+        Intent intent = new Intent(this, SearchMovieDetailActivity.class);
         intent.putExtra(MovieDetailActivity.EXTRA_MOVIE_ID, movie.getId());
 
         startActivity(intent);

@@ -21,6 +21,7 @@
 
         <activity android:name=".DashboardActivity" />
         <activity android:name=".MovieDetailActivity" />
+        <activity android:name=".SearchMovieDetailActivity" />
     </application>
 
 </manifest>

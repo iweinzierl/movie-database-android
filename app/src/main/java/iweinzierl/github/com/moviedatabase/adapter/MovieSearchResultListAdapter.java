@@ -53,14 +53,14 @@ public class MovieSearchResultListAdapter extends BaseListAdapter<Movie> {
             holder.title = title;
             holder.description = description;
 
-            loadImage(movie.getCover(), cover);
+            loadImage(movie.getCoverUrl(), cover);
             title.setText(movie.getTitle());
             description.setText(createShortDescription(movie.getDescription()));
 
             view.setTag(holder);
         } else {
             ViewHolder holder = (ViewHolder) view.getTag();
-            loadImage(movie.getCover(), holder.cover);
+            loadImage(movie.getCoverUrl(), holder.cover);
             holder.title.setText(movie.getTitle());
             holder.description.setText(createShortDescription(movie.getDescription()));
         }
