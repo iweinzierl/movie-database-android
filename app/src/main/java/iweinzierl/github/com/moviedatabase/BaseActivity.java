@@ -109,6 +109,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.string.nav_dashboard:
                 startActivity(new Intent(this, DashboardActivity.class));
                 break;
+            case R.string.nav_movie_list:
+                startActivity(new Intent(this, MovieListActivity.class));
+                break;
             case R.string.nav_search_movie:
                 startActivity(new Intent(this, SearchMovieActivity.class));
                 break;

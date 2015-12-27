@@ -13,24 +13,6 @@ import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
 public class SearchMovieDetailActivity extends MovieDetailActivity {
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
-        new GetSearchMovieTask(this) {
-            @Override
-            protected void onPostExecute(final Movie movie) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        movie.setId(null);
-                        setMovie(movie);
-                    }
-                });
-            }
-        }.execute(getMovieIdFromIntent());
-    }
-
-    @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
 
@@ -49,6 +31,22 @@ public class SearchMovieDetailActivity extends MovieDetailActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void update() {
+        new GetSearchMovieTask(this) {
+            @Override
+            protected void onPostExecute(final Movie movie) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        movie.setId(null);
+                        setMovie(movie);
+                    }
+                });
+            }
+        }.execute(getMovieIdFromIntent());
     }
 
     private void addMovieToCollection() {

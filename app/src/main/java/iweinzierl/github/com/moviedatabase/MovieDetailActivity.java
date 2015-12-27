@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.google.common.base.Strings;
 
 import iweinzierl.github.com.moviedatabase.async.DeleteMovieTask;
+import iweinzierl.github.com.moviedatabase.async.GetMovieTask;
 import iweinzierl.github.com.moviedatabase.fragment.MovieDetailFragment;
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
 
@@ -34,6 +35,12 @@ public class MovieDetailActivity extends BaseActivity {
                 .beginTransaction()
                 .replace(R.id.content, movieDetailFragment)
                 .commit();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        update();
     }
 
     @Override
@@ -88,15 +95,30 @@ public class MovieDetailActivity extends BaseActivity {
         this.movie = movie;
         movieDetailFragment.setMovie(movie);
 
+        setTitle(movie.getTitle());
         updateOptionsMenu();
+    }
+
+    protected void update() {
+        new GetMovieTask(this) {
+            @Override
+            protected void onPostExecute(Movie movie) {
+                setMovie(movie);
+            }
+        }.execute(getMovieIdFromIntent());
     }
 
     private void updateOptionsMenu() {
         Movie movie = getMovie();
 
         if (movie != null && !Strings.isNullOrEmpty(movie.getId())) {
-            addMovieMenuItem.setVisible(false);
-            removeMovieMenuItem.setVisible(true);
+            if (addMovieMenuItem != null) {
+                addMovieMenuItem.setVisible(false);
+            }
+
+            if (removeMovieMenuItem != null) {
+                removeMovieMenuItem.setVisible(true);
+            }
         }
     }
 

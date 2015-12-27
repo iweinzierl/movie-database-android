@@ -24,7 +24,13 @@
         <activity
             android:name=".SearchMovieActivity"
             android:label="@string/moviesearch_title" />
+
+        <activity
+            android:name=".MovieListActivity"
+            android:label="@string/movielist_title" />
+
         <activity android:name=".MovieDetailActivity" />
+
         <activity android:name=".SearchMovieDetailActivity" />
     </application>
 

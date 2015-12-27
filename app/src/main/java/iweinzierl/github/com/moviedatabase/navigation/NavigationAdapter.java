@@ -16,6 +16,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
 
     public static final int[] navigationItems = {
             R.string.nav_dashboard,
+            R.string.nav_movie_list,
             R.string.nav_search_movie
     };
 
@@ -77,6 +78,9 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
             switch (item) {
                 case R.string.nav_dashboard:
                     holder.imageView.setImageResource(R.drawable.ic_home_white_24dp);
+                    break;
+                case R.string.nav_movie_list:
+                    holder.imageView.setImageResource(R.drawable.ic_list_white_24dp);
                     break;
                 case R.string.nav_search_movie:
                     holder.imageView.setImageResource(R.drawable.ic_search_white_24dp);
