@@ -1,6 +1,7 @@
 package iweinzierl.github.com.moviedatabase.rest.client;
 
 import java.util.List;
+import java.util.Set;
 
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
 import iweinzierl.github.com.moviedatabase.rest.domain.Statistics;
@@ -33,4 +34,8 @@ public interface BackendClient {
     @Headers({"Accept: application/json"})
     @GET("/api/statistics")
     Call<Statistics> getStatistics();
+
+    @Headers({"Accept: application/json"})
+    @GET("/api/genre")
+    Call<Set<String>> listGenres();
 }

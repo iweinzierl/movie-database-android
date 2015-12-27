@@ -12,6 +12,8 @@
     <string name="dashboard_label_number_of_lent_movies">Number of Movies (lent):</string>
 
     <string name="movielist_title">Collection</string>
+    <string name="movielist_menu_sort_collection">Sort</string>
+    <string name="movielist_menu_filter_collection">Filter</string>
 
     <string name="moviesearch_title">Movie Search</string>
     <string name="moviesearch_search_button">Search</string>
@@ -22,11 +24,15 @@
     <string name="moviedetail_save_movie_successful">Successfully saved movie: %s</string>
     <string name="moviedetail_delete_movie_successful">Successfully deleted movie: %s</string>
 
+    <string name="selectablegenrelist_title">Select Genres</string>
+    <string name="selectablegenrelist_submit_button">Approve</string>
+
     <string name="task_search_movie_error_message">Unknown Error while searching for movie: %s</string>
     <string name="task_get_search_movie_error_message">Unknown Error while loading searched movie: %s</string>
     <string name="task_save_movie_error_message">Unknown Error while saving movie: %s</string>
     <string name="task_get_movies_error_message">Unknown Error while fetching movies: %s</string>
     <string name="task_get_movie_error_message">Unknown Error while fetching movie: %s</string>
+    <string name="task_get_genres_error_message">Unknown Error while fetching genres: %s</string>
     <string name="task_delete_movie_error_message">Unknown Error while deleting movie: %s</string>
     <string name="task_get_statistics_error_message">Unknown Error while fetching statistics: %s</string>
 </resources>

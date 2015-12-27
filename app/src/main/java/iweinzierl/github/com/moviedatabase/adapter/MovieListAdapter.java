@@ -17,16 +17,9 @@ import java.util.Set;
 
 import iweinzierl.github.com.moviedatabase.R;
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
+import iweinzierl.github.com.moviedatabase.util.MovieTitleComparator;
 
 public class MovieListAdapter extends BaseListAdapter<Movie> {
-
-    private static class MovieComparator implements Comparator<Movie> {
-
-        @Override
-        public int compare(Movie one, Movie two) {
-            return one.getTitle().compareTo(two.getTitle());
-        }
-    }
 
     private static class ViewHolder {
         private ImageView cover;
@@ -36,7 +29,7 @@ public class MovieListAdapter extends BaseListAdapter<Movie> {
     }
 
     public MovieListAdapter(Context context, List<Movie> items) {
-        this(context, items, new MovieComparator());
+        this(context, items, new MovieTitleComparator());
     }
 
     public MovieListAdapter(Context context, List<Movie> items, Comparator<Movie> comparator) {

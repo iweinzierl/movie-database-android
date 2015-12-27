@@ -32,6 +32,10 @@
         <activity android:name=".MovieDetailActivity" />
 
         <activity android:name=".SearchMovieDetailActivity" />
+
+        <activity
+            android:name=".SelectableGenreListActivity"
+            android:label="@string/selectablegenrelist_title" />
     </application>
 
 </manifest>

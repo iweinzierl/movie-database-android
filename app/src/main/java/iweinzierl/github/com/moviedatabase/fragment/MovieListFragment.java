@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import iweinzierl.github.com.moviedatabase.R;
@@ -58,7 +59,8 @@ public class MovieListFragment extends Fragment {
         }
     }
 
-    public void setMovies(List<Movie> movies) {
+    public void setMovies(List<Movie> movies, Comparator<Movie> movieComparator) {
         movieListAdapter.setItems(movies);
+        movieListAdapter.setComparator(movieComparator);
     }
 }

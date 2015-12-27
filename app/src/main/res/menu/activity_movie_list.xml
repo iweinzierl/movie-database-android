@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/sort_collection"
+        android:icon="@drawable/ic_sort_white_24dp"
+        android:title="@string/movielist_menu_sort_collection"
+        tools:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/filter_collection"
+        android:icon="@drawable/ic_filter_list_white_24dp"
+        android:title="@string/movielist_menu_filter_collection"
+        tools:showAsAction="ifRoom" />
+
+</menu>

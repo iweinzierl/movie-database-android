@@ -43,6 +43,11 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    public void setComparator(Comparator<T> comparator) {
+        this.comparator = comparator;
+        Collections.sort(this.items, comparator);
+    }
+
     @Override
     public int getCount() {
         return items.size();
@@ -60,6 +65,10 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
     @Override
     public long getItemId(final int i) {
         return i;
+    }
+
+    public int getIndexOf(T item) {
+        return items.indexOf(item);
     }
 
     public void remove(final int i) {
