@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MovieDatabase</string>
+
+    <string name="nav_header_app_version">App Version: </string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_movie_list">Sammlung</string>
+    <string name="nav_search_movie">Film Suche</string>
+
+    <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_label_number_of_movies">Anzahl Filme:</string>
+    <string name="dashboard_label_number_of_genres">Anzahl Genres:</string>
+    <string name="dashboard_label_number_of_lent_movies">Anzahl Filme (verliehen):</string>
+    <string name="dashboard_progress_load_statistics">Lade Statistiken über Sammlung</string>
+
+    <string name="movielist_title">Sammlung</string>
+    <string name="movielist_menu_sort_collection">Sortieren</string>
+    <string name="movielist_menu_filter_collection">Filtern</string>
+    <string name="movielist_progress_load_movies">Lade Film Sammlung</string>
+
+    <string name="moviesearch_title">Film Suche</string>
+    <string name="moviesearch_search_button">Suchen</string>
+    <string name="moviesearch_search_field_hint">Suchtext</string>
+    <string name="moviesearch_progress_search_movies">Suche nach Filmen</string>
+
+    <string name="moviedetail_menu_add_to_collection">Zur Sammlung Hinzufügen</string>
+    <string name="moviedetail_menu_remove_from_collection">Aus Sammlung Entfernen</string>
+    <string name="moviedetail_save_movie_successful">Film erfolgreich zur Sammlung hinzugefügt: %s</string>
+    <string name="moviedetail_delete_movie_successful">Film erfolgreich aus Sammlung entfernt: %s</string>
+    <string name="moviedetail_progress_load_movie">Lade Film</string>
+    <string name="moviedetail_progress_add_movie_to_collection">Füge Film zur Sammlung hinzu</string>
+    <string name="moviedetail_progress_remove_movie_from_collection">Entferne Film aus der Sammlung</string>
+
+    <string name="selectablegenrelist_title">Genre auswählen</string>
+    <string name="selectablegenrelist_submit_button">Übernehmen</string>
+
+    <string name="moviecomparatorchoice_title">Sortierung auswählen</string>
+    <string name="moviecomparatorchoice_submit_button">Übernehmen</string>
+    <string name="moviecomparatorchoice_listitem_title_asc_comparator">nach Titel sortieren (aufsteigend)</string>
+    <string name="moviecomparatorchoice_listitem_title_desc_comparator">nach Titel sortieren (absteigend)</string>
+    <string name="moviecomparatorchoice_listitem_length_asc_comparator">nach Länge sortieren (aufsteigend)</string>
+    <string name="moviecomparatorchoice_listitem_length_desc_comparator">nach Länge sortieren (absteigend)</string>
+
+    <string name="task_search_movie_error_message">Unbekannter Fehler bei der Suche nach Filmen: %s</string>
+    <string name="task_get_search_movie_error_message">Unbekannter Fehler beim Laden des Suchergebnisses: %s</string>
+    <string name="task_save_movie_error_message">Unbekannter Fehler beim speichern des Films: %s</string>
+    <string name="task_get_movies_error_message">Unbekannter Fehler beim Laden der Filme: %s</string>
+    <string name="task_get_movie_error_message">Unbekannter Fehler beim Laden des Films: %s</string>
+    <string name="task_get_genres_error_message">Unbekannter Fehler beim Laden der Genre: %s</string>
+    <string name="task_delete_movie_error_message">Unbekannter Fehler beim Entfernen des Films: %s</string>
+    <string name="task_get_statistics_error_message">Unbekannter Fehler beim Laden der Statistiken: %s</string>
+</resources>

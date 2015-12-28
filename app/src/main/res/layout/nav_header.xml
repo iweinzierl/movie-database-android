@@ -13,7 +13,7 @@
         <ImageView
             android:id="@+id/app_image"
             style="@style/MyTheme.Navigation.Header.Icon"
-            android:src="@drawable/ic_local_movies_white_48dp" />
+            android:src="@drawable/app_icon_transparent" />
 
         <LinearLayout
             android:layout_width="wrap_content"
