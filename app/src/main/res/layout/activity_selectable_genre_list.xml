@@ -9,10 +9,21 @@
         android:layout_alignParentBottom="true"
         android:text="@string/selectablegenrelist_submit_button" />
 
-    <FrameLayout
-        android:id="@+id/content"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/submit" />
+        android:layout_above="@id/submit"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_top"
+            style="@style/MyTheme.Toolbar" />
+
+        <FrameLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 </RelativeLayout>
