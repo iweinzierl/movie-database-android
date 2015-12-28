@@ -28,7 +28,6 @@ import retrofit.Retrofit;
 
 public class ClientFactory {
 
-    //private static final String BASE_URL_SEARCH = "http://10.0.2.2:8080";
     private static final String BASE_URL_SEARCH = "http://moviedatabase-search.inselhome.org";
     private static final String BASE_URL_BACKEND = "http://moviedatabase-backend.inselhome.org";
 
@@ -47,7 +46,7 @@ public class ClientFactory {
         OkHttpClient client = createClient();
 
         return new Retrofit.Builder()
-                .baseUrl(BASE_URL_SEARCH)
+                .baseUrl(BASE_URL_BACKEND)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(createGson()))
                 .build()
