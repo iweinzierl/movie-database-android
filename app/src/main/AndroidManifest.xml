@@ -36,6 +36,10 @@
         <activity
             android:name=".SelectableGenreListActivity"
             android:label="@string/selectablegenrelist_title" />
+
+        <activity
+            android:name=".MovieComparatorChoiceActivity"
+            android:label="@string/moviecomparatorchoice_title" />
     </application>
 
 </manifest>

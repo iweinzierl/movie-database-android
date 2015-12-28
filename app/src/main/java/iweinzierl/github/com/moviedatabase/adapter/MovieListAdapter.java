@@ -17,7 +17,7 @@ import java.util.Set;
 
 import iweinzierl.github.com.moviedatabase.R;
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
-import iweinzierl.github.com.moviedatabase.util.MovieTitleComparator;
+import iweinzierl.github.com.moviedatabase.util.MovieTitleAscendingComparator;
 
 public class MovieListAdapter extends BaseListAdapter<Movie> {
 
@@ -29,7 +29,7 @@ public class MovieListAdapter extends BaseListAdapter<Movie> {
     }
 
     public MovieListAdapter(Context context, List<Movie> items) {
-        this(context, items, new MovieTitleComparator());
+        this(context, items, new MovieTitleAscendingComparator());
     }
 
     public MovieListAdapter(Context context, List<Movie> items, Comparator<Movie> comparator) {

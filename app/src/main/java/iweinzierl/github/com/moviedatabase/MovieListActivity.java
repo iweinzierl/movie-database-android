@@ -6,8 +6,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.github.iweinzierl.android.logging.AndroidLoggerFactory;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
+
+import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,9 +22,11 @@ import iweinzierl.github.com.moviedatabase.async.GetMoviesTask;
 import iweinzierl.github.com.moviedatabase.fragment.MovieListFragment;
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
 import iweinzierl.github.com.moviedatabase.util.CollectionUtils;
-import iweinzierl.github.com.moviedatabase.util.MovieTitleComparator;
+import iweinzierl.github.com.moviedatabase.util.MovieTitleAscendingComparator;
 
 public class MovieListActivity extends BaseActivity implements MovieListFragment.Callback {
+
+    private static final Logger LOG = AndroidLoggerFactory.getInstance().getLogger(MovieListActivity.class.getName());
 
     private List<Movie> movies;
 
@@ -35,7 +40,7 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
         super.onCreate(savedInstanceState);
 
         movieListFragment = new MovieListFragment();
-        movieComparator = new MovieTitleComparator();
+        movieComparator = new MovieTitleAscendingComparator();
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -65,6 +70,8 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
                 case SelectableGenreListActivity.REQUEST_GENRES:
                     setGenresFilter(data.getStringArrayListExtra(SelectableGenreListActivity.EXTRA_SELECTED_GENRES));
                     break;
+                case MovieComparatorChoiceActivity.REQUEST_COMPARATOR:
+                    setMovieComparator(data.getStringExtra(MovieComparatorChoiceActivity.EXTRA_SELECTED_COMPARATOR));
             }
         }
     }
@@ -117,8 +124,27 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
         this.genresFilter = filter;
     }
 
+    @SuppressWarnings("unchecked")
+    public void setMovieComparator(String comparatorClassName) {
+        try {
+            Class<?> comparatorClass = Class.forName(comparatorClassName);
+            movieComparator = (Comparator<Movie>) comparatorClass.newInstance();
+
+            applyFilterAndComparator();
+        } catch (ClassNotFoundException e) {
+            LOG.error("Comparator class not found: {}", comparatorClassName, e);
+        } catch (InstantiationException e) {
+            LOG.error("Unable to create instance of comparator class: {}", comparatorClassName, e);
+        } catch (IllegalAccessException e) {
+            LOG.error("Not allowed to create instance of comparator class: {}", comparatorClassName, e);
+        }
+    }
+
     private void showSortCollectionOptions() {
-        // TODO
+        Intent intent = new Intent(this, MovieComparatorChoiceActivity.class);
+        intent.putExtra(MovieComparatorChoiceActivity.EXTRA_SELECTED_COMPARATOR, movieComparator.getClass().getName());
+
+        startActivityForResult(intent, MovieComparatorChoiceActivity.REQUEST_COMPARATOR);
     }
 
     private void showFilterCollectionOptions() {

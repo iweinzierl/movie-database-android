@@ -27,6 +27,13 @@
     <string name="selectablegenrelist_title">Select Genres</string>
     <string name="selectablegenrelist_submit_button">Approve</string>
 
+    <string name="moviecomparatorchoice_title">Select Order</string>
+    <string name="moviecomparatorchoice_submit_button">Approve</string>
+    <string name="moviecomparatorchoice_listitem_title_asc_comparator">Sort By Title (Ascending)</string>
+    <string name="moviecomparatorchoice_listitem_title_desc_comparator">Sort By Title (Descending)</string>
+    <string name="moviecomparatorchoice_listitem_length_asc_comparator">Sort By Length (Ascending)</string>
+    <string name="moviecomparatorchoice_listitem_length_desc_comparator">Sort By Length (Descending)</string>
+
     <string name="task_search_movie_error_message">Unknown Error while searching for movie: %s</string>
     <string name="task_get_search_movie_error_message">Unknown Error while loading searched movie: %s</string>
     <string name="task_save_movie_error_message">Unknown Error while saving movie: %s</string>

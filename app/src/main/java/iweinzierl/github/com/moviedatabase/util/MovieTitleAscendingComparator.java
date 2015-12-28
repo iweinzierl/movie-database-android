@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
 
-public class MovieTitleComparator implements Comparator<Movie> {
+public class MovieTitleAscendingComparator implements Comparator<Movie> {
 
     @Override
     public int compare(Movie one, Movie two) {
