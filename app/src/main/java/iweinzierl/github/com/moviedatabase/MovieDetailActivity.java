@@ -100,10 +100,13 @@ public class MovieDetailActivity extends BaseActivity {
     }
 
     protected void update() {
+        startProgress(getString(R.string.moviedetail_progress_load_movie));
+
         new GetMovieTask(this) {
             @Override
             protected void onPostExecute(Movie movie) {
                 setMovie(movie);
+                stopProgress();
             }
         }.execute(getMovieIdFromIntent());
     }
@@ -123,6 +126,8 @@ public class MovieDetailActivity extends BaseActivity {
     }
 
     private void removeMovieFromCollection() {
+        startProgress(getString(R.string.moviedetail_progress_remove_movie_from_collection));
+
         new DeleteMovieTask(this) {
             @Override
             protected void onPostExecute(final Movie movie) {
@@ -131,6 +136,8 @@ public class MovieDetailActivity extends BaseActivity {
                     @Override
                     public void run() {
                         setMovie(movie);
+
+                        stopProgress();
                         notifySuccessfullDeletion();
                     }
                 });

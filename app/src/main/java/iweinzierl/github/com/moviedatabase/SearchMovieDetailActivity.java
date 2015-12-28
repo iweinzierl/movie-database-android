@@ -35,6 +35,8 @@ public class SearchMovieDetailActivity extends MovieDetailActivity {
 
     @Override
     protected void update() {
+        startProgress(getString(R.string.moviedetail_progress_load_movie));
+
         new GetSearchMovieTask(this) {
             @Override
             protected void onPostExecute(final Movie movie) {
@@ -43,6 +45,8 @@ public class SearchMovieDetailActivity extends MovieDetailActivity {
                     public void run() {
                         movie.setId(null);
                         setMovie(movie);
+
+                        stopProgress();
                     }
                 });
             }
@@ -50,6 +54,8 @@ public class SearchMovieDetailActivity extends MovieDetailActivity {
     }
 
     private void addMovieToCollection() {
+        startProgress(getString(R.string.moviedetail_progress_add_movie_to_collection));
+
         new SaveMovieTask(this) {
             @Override
             protected void onPostExecute(final Movie movie) {
@@ -58,6 +64,8 @@ public class SearchMovieDetailActivity extends MovieDetailActivity {
                         @Override
                         public void run() {
                             setMovie(movie);
+
+                            stopProgress();
                             notifySuccessfullPersistence();
                         }
                     });

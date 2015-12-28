@@ -1,6 +1,9 @@
 <resources>
 
-    <style name="MyTheme" parent="Theme.AppCompat.NoActionBar" />
+    <style name="MyTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/colorGreyDark</item>
+        <item name="android:colorBackground">@color/colorGreyDark</item>
+    </style>
 
     <style name="MyTheme.Toolbar">
         <item name="android:background">@color/colorPrimaryDark</item>
@@ -61,6 +64,14 @@
     <style name="MyTheme.Navigation.Item.Image">
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>
+    </style>
+
+    <style name="MyTheme.Progress">
+        <item name="android:background">@color/colorGreyDark</item>
+    </style>
+
+    <style name="MyTheme.Progress.Text">
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="MyTheme.ListItem">

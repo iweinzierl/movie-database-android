@@ -13,6 +13,8 @@ import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.github.iweinzierl.android.logging.AndroidLoggerFactory;
 
@@ -29,10 +31,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected RecyclerView recyclerView;
 
+    private ProgressBar progressBar;
+    private TextView progressText;
+    private View progressOverlay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        progressText = (TextView) findViewById(R.id.progress_text);
+        progressOverlay = findViewById(R.id.progress_overlay);
 
         final GestureDetectorCompat gestureDetector = new GestureDetectorCompat(this, new GestureDetector.SimpleOnGestureListener() {
             @Override
@@ -81,6 +91,17 @@ public abstract class BaseActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    protected void startProgress(String message) {
+        progressText.setText(message);
+        progressBar.setIndeterminate(true);
+        progressOverlay.setVisibility(View.VISIBLE);
+    }
+
+    protected void stopProgress() {
+        progressBar.setIndeterminate(false);
+        progressOverlay.setVisibility(View.GONE);
     }
 
     private String getUsername() {

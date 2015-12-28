@@ -4,23 +4,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_top"
-            style="@style/MyTheme.Toolbar">
-
-        </android.support.v7.widget.Toolbar>
+            style="@style/MyTheme.Toolbar"
+            android:layout_alignParentTop="true" />
 
         <FrameLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar_top" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/progress_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <RelativeLayout
+                style="@style/MyTheme.Progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/progress_text"
+                    style="MyTheme.Progress.Text"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="@android:style/Widget.Material.ProgressBar.Horizontal"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/progress_text"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:indeterminate="true"
+                    android:max="100" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/navigation_drawer"

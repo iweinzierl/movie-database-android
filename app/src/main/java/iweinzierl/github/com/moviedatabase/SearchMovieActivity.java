@@ -32,6 +32,8 @@ public class SearchMovieActivity extends BaseActivity implements SearchMovieFrag
 
     @Override
     public void onStartSearch(String search) {
+        startProgress(getString(R.string.moviesearch_progress_search_movies));
+
         new SearchMovieTask(this) {
             @Override
             protected void onPostExecute(final List<Movie> movies) {
@@ -39,6 +41,7 @@ public class SearchMovieActivity extends BaseActivity implements SearchMovieFrag
                     @Override
                     public void run() {
                         searchMovieFragment.setSearchResults(movies);
+                        stopProgress();
                     }
                 });
             }

@@ -6,4 +6,5 @@
     <color name="accent_material_dark">#40ff70</color>
     <color name="primary_dark_material_dark">#092da1</color>
     <color name="primary_material_dark">#1745da</color>
+    <color name="colorGreyDark">#262424</color>
 </resources>

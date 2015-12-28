@@ -26,10 +26,13 @@ public class DashboardActivity extends BaseActivity {
     protected void onPostResume() {
         super.onPostResume();
 
+        startProgress(getString(R.string.dashboard_progress_load_statistics));
+
         new GetStatisticsTask(this) {
             @Override
             protected void onPostExecute(Statistics statistics) {
                 setStatistics(statistics);
+                stopProgress();
             }
         }.execute();
     }

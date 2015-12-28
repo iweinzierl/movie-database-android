@@ -52,11 +52,14 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
     protected void onStart() {
         super.onStart();
 
+        startProgress(getString(R.string.movielist_progress_load_movies));
+
         new GetMoviesTask(this) {
             @Override
             protected void onPostExecute(List<Movie> movies) {
                 super.onPostExecute(movies);
                 setMovies(movies);
+                stopProgress();
             }
         }.execute();
     }

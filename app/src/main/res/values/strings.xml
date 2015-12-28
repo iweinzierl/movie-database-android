@@ -10,19 +10,25 @@
     <string name="dashboard_label_number_of_movies">Number of Movies:</string>
     <string name="dashboard_label_number_of_genres">Number of Genres:</string>
     <string name="dashboard_label_number_of_lent_movies">Number of Movies (lent):</string>
+    <string name="dashboard_progress_load_statistics">Loading Collection Statistics</string>
 
     <string name="movielist_title">Collection</string>
     <string name="movielist_menu_sort_collection">Sort</string>
     <string name="movielist_menu_filter_collection">Filter</string>
+    <string name="movielist_progress_load_movies">Loading Movie Collection</string>
 
     <string name="moviesearch_title">Movie Search</string>
     <string name="moviesearch_search_button">Search</string>
     <string name="moviesearch_search_field_hint">Search Text</string>
+    <string name="moviesearch_progress_search_movies">Searching for Movies</string>
 
     <string name="moviedetail_menu_add_to_collection">Add to Collection</string>
     <string name="moviedetail_menu_remove_from_collection">Remove to Collection</string>
     <string name="moviedetail_save_movie_successful">Successfully saved movie: %s</string>
     <string name="moviedetail_delete_movie_successful">Successfully deleted movie: %s</string>
+    <string name="moviedetail_progress_load_movie">Loading Movie</string>
+    <string name="moviedetail_progress_add_movie_to_collection">Adding Movie to Collection</string>
+    <string name="moviedetail_progress_remove_movie_from_collection">Removing Movie from Collection</string>
 
     <string name="selectablegenrelist_title">Select Genres</string>
     <string name="selectablegenrelist_submit_button">Approve</string>
