@@ -7,6 +7,15 @@
     <string name="nav_movie_list">Sammlung</string>
     <string name="nav_search_movie">Film Suche</string>
 
+    <string name="login_title">Anmelden</string>
+    <string name="login_prompt_username">Benutzer</string>
+    <string name="login_prompt_password">Passwort</string>
+    <string name="login_store_credentials">Benutzer/Passwort speichern</string>
+    <string name="login_action_sign_in">Anmelden</string>
+    <string name="login_error_invalid_password">Das Passwort ist falsch</string>
+    <string name="login_error_incorrect_password">Das Passwort ist falsch</string>
+    <string name="login_error_field_required">Erforderliches Feld</string>
+
     <string name="dashboard_title">Dashboard</string>
     <string name="dashboard_label_number_of_movies">Anzahl Filme:</string>
     <string name="dashboard_label_number_of_genres">Anzahl Genres:</string>

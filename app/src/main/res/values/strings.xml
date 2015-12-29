@@ -6,6 +6,15 @@
     <string name="nav_movie_list">Collection</string>
     <string name="nav_search_movie">Movie Search</string>
 
+    <string name="login_title">Sign in</string>
+    <string name="login_prompt_username">Username</string>
+    <string name="login_prompt_password">Password</string>
+    <string name="login_store_credentials">Store Username/Password</string>
+    <string name="login_action_sign_in">Sign in</string>
+    <string name="login_error_invalid_password">This password is invalid</string>
+    <string name="login_error_incorrect_password">This password is incorrect</string>
+    <string name="login_error_field_required">This field is required</string>
+
     <string name="dashboard_title">Dashboard</string>
     <string name="dashboard_label_number_of_movies">Number of Movies:</string>
     <string name="dashboard_label_number_of_genres">Number of Genres:</string>
@@ -48,4 +57,5 @@
     <string name="task_get_genres_error_message">Unknown Error while fetching genres: %s</string>
     <string name="task_delete_movie_error_message">Unknown Error while deleting movie: %s</string>
     <string name="task_get_statistics_error_message">Unknown Error while fetching statistics: %s</string>
+
 </resources>

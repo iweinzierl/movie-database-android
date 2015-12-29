@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 import iweinzierl.github.com.moviedatabase.rest.client.BackendClient;
 import iweinzierl.github.com.moviedatabase.rest.client.SearchClient;
+import iweinzierl.github.com.moviedatabase.rest.security.BasicAuthInterceptor;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 
@@ -33,6 +34,7 @@ public class ClientFactory {
 
     public static SearchClient createSearchClient(Context context) {
         OkHttpClient client = createClient();
+        client.interceptors().add(new BasicAuthInterceptor(context));
 
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL_SEARCH)
@@ -44,6 +46,7 @@ public class ClientFactory {
 
     public static BackendClient createBackendClient(Context context) {
         OkHttpClient client = createClient();
+        client.interceptors().add(new BasicAuthInterceptor(context));
 
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL_BACKEND)

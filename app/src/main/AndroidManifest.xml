@@ -11,35 +11,33 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
+
         <activity
-            android:name=".DashboardActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".DashboardActivity"
+            android:label="@string/dashboard_title" />
         <activity
             android:name=".SearchMovieActivity"
             android:label="@string/moviesearch_title" />
-
         <activity
             android:name=".MovieListActivity"
             android:label="@string/movielist_title" />
-
         <activity android:name=".MovieDetailActivity" />
-
         <activity android:name=".SearchMovieDetailActivity" />
-
         <activity
             android:name=".SelectableGenreListActivity"
             android:label="@string/selectablegenrelist_title" />
-
         <activity
             android:name=".MovieComparatorChoiceActivity"
             android:label="@string/moviecomparatorchoice_title" />
+
     </application>
 
 </manifest>
