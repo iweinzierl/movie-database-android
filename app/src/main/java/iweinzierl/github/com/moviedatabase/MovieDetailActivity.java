@@ -9,9 +9,13 @@ import android.widget.Toast;
 
 import com.google.common.base.Strings;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import iweinzierl.github.com.moviedatabase.async.DeleteMovieTask;
+import iweinzierl.github.com.moviedatabase.async.GetLentMovieInfoTask;
 import iweinzierl.github.com.moviedatabase.async.GetMovieTask;
 import iweinzierl.github.com.moviedatabase.fragment.MovieDetailFragment;
+import iweinzierl.github.com.moviedatabase.rest.domain.LentMovieInfo;
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
 
 public class MovieDetailActivity extends BaseActivity {
@@ -22,8 +26,13 @@ public class MovieDetailActivity extends BaseActivity {
 
     protected MenuItem addMovieMenuItem;
     protected MenuItem removeMovieMenuItem;
+    protected MenuItem lendMovieMenuItem;
+    protected MenuItem movieReturnedMenuItem;
 
     private Movie movie;
+    private LentMovieInfo lentMovieInfo;
+
+    private AtomicInteger activeAsyncCalls = new AtomicInteger(0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +68,15 @@ public class MovieDetailActivity extends BaseActivity {
 
         this.addMovieMenuItem = menu.findItem(R.id.add_to_collection);
         this.removeMovieMenuItem = menu.findItem(R.id.remove_from_collection);
+        this.lendMovieMenuItem = menu.findItem(R.id.lend_movie);
+        this.movieReturnedMenuItem = menu.findItem(R.id.movie_returned);
 
-        addMovieMenuItem.setVisible(false);
-        removeMovieMenuItem.setVisible(true);
+        showAddMovieMenuItem(false);
+        showRemoveMovieMenuItem(false);
+        showLendMovieMenuItem(false);
+        showReturnMovieMenuItem(false);
+
+        updateOptionsMenu();
 
         return true;
     }
@@ -82,6 +97,20 @@ public class MovieDetailActivity extends BaseActivity {
         return R.layout.activity_base;
     }
 
+    @Override
+    protected void startProgress(String message) {
+        if (activeAsyncCalls.getAndIncrement() == 0) {
+            super.startProgress(message);
+        }
+    }
+
+    @Override
+    protected void stopProgress() {
+        if (activeAsyncCalls.getAndDecrement() <= 1) {
+            super.stopProgress();
+        }
+    }
+
     protected String getMovieIdFromIntent() {
         Intent intent = getIntent();
         return intent.getStringExtra(EXTRA_MOVIE_ID);
@@ -99,7 +128,19 @@ public class MovieDetailActivity extends BaseActivity {
         updateOptionsMenu();
     }
 
+    protected void setLentMovieInfo(LentMovieInfo lentMovieInfo) {
+        this.lentMovieInfo = lentMovieInfo;
+        movieDetailFragment.setLentMovieInfo(lentMovieInfo);
+
+        updateOptionsMenu();
+    }
+
     protected void update() {
+        updateMovieDetails();
+        updateLentMovieInfo();
+    }
+
+    protected void updateMovieDetails() {
         startProgress(getString(R.string.moviedetail_progress_load_movie));
 
         new GetMovieTask(this) {
@@ -111,17 +152,69 @@ public class MovieDetailActivity extends BaseActivity {
         }.execute(getMovieIdFromIntent());
     }
 
-    private void updateOptionsMenu() {
-        Movie movie = getMovie();
+    protected void updateLentMovieInfo() {
+        startProgress(getString(R.string.moviedetail_progress_load_movie));
 
-        if (movie != null && !Strings.isNullOrEmpty(movie.getId())) {
-            if (addMovieMenuItem != null) {
-                addMovieMenuItem.setVisible(false);
+        new GetLentMovieInfoTask(this) {
+            @Override
+            protected void onPostExecute(LentMovieInfo lentMovieInfo) {
+                setLentMovieInfo(lentMovieInfo);
+                stopProgress();
             }
+        }.execute(getMovieIdFromIntent());
+    }
 
-            if (removeMovieMenuItem != null) {
-                removeMovieMenuItem.setVisible(true);
+    protected void updateOptionsMenu() {
+        if (isMovieInCollection()) {
+            showAddMovieMenuItem(false);
+            showRemoveMovieMenuItem(true);
+
+            if (isMovieLent()) {
+                showLendMovieMenuItem(false);
+                showReturnMovieMenuItem(true);
+            } else {
+                showLendMovieMenuItem(true);
+                showReturnMovieMenuItem(false);
             }
+        } else {
+            showAddMovieMenuItem(true);
+            showRemoveMovieMenuItem(false);
+            showLendMovieMenuItem(false);
+            showReturnMovieMenuItem(false);
+        }
+    }
+
+    protected boolean isMovieInCollection() {
+        return movie != null && !Strings.isNullOrEmpty(movie.getId());
+    }
+
+    protected boolean isMovieLent() {
+        return isMovieInCollection()
+                && lentMovieInfo != null
+                && !Strings.isNullOrEmpty(lentMovieInfo.getPerson());
+    }
+
+    private void showAddMovieMenuItem(boolean show) {
+        if (addMovieMenuItem != null) {
+            addMovieMenuItem.setVisible(show);
+        }
+    }
+
+    private void showRemoveMovieMenuItem(boolean show) {
+        if (removeMovieMenuItem != null) {
+            removeMovieMenuItem.setVisible(show);
+        }
+    }
+
+    private void showLendMovieMenuItem(boolean show) {
+        if (lendMovieMenuItem != null) {
+            lendMovieMenuItem.setVisible(show);
+        }
+    }
+
+    private void showReturnMovieMenuItem(boolean show) {
+        if (movieReturnedMenuItem != null) {
+            movieReturnedMenuItem.setVisible(show);
         }
     }
 
@@ -138,7 +231,7 @@ public class MovieDetailActivity extends BaseActivity {
                         setMovie(movie);
 
                         stopProgress();
-                        notifySuccessfullDeletion();
+                        notifySuccessfulDeletion();
                     }
                 });
             }
@@ -146,7 +239,7 @@ public class MovieDetailActivity extends BaseActivity {
         finish();
     }
 
-    private void notifySuccessfullDeletion() {
+    private void notifySuccessfulDeletion() {
         Toast.makeText(
                 MovieDetailActivity.this,
                 getString(R.string.moviedetail_delete_movie_successful, getMovie().getTitle()),

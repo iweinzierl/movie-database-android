@@ -3,6 +3,7 @@ package iweinzierl.github.com.moviedatabase.rest.client;
 import java.util.List;
 import java.util.Set;
 
+import iweinzierl.github.com.moviedatabase.rest.domain.LentMovieInfo;
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
 import iweinzierl.github.com.moviedatabase.rest.domain.Statistics;
 import retrofit.Call;
@@ -38,4 +39,8 @@ public interface BackendClient {
     @Headers({"Accept: application/json"})
     @GET("/api/genre")
     Call<Set<String>> listGenres();
+
+    @Headers({"Accept: application/json"})
+    @GET("/api/lent/{id}")
+    Call<LentMovieInfo> getLentMovieInfo(@Path("id") String movieId);
 }

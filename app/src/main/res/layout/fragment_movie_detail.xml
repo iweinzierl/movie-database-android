@@ -1,71 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/MyTheme.MovieDetail"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <TextView
+        style="@style/MyTheme.MovieDetail.Text.Title.LentMovieTo"
+        android:id="@+id/lent_movie_to"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
 
-        <RelativeLayout
+    <ScrollView
+        style="@style/MyTheme.MovieDetail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/lent_movie_to">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/cover"
-                style="@style/MyTheme.MovieDetail.Cover"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true" />
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/cover"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/title"
-                    style="@style/MyTheme.MovieDetail.Text.Title"
+                <ImageView
+                    android:id="@+id/cover"
+                    style="@style/MyTheme.MovieDetail.Cover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/cover"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/original_title"
-                    style="@style/MyTheme.MovieDetail.Text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/title"
+                        style="@style/MyTheme.MovieDetail.Text.Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/publish_date"
-                    style="@style/MyTheme.MovieDetail.Text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/original_title"
+                        style="@style/MyTheme.MovieDetail.Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/length"
-                    style="@style/MyTheme.MovieDetail.Text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/publish_date"
+                        style="@style/MyTheme.MovieDetail.Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/genres"
-                    style="@style/MyTheme.MovieDetail.Text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/length"
+                        style="@style/MyTheme.MovieDetail.Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/genres"
+                        style="@style/MyTheme.MovieDetail.Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-        </RelativeLayout>
+                </LinearLayout>
 
-        <TextView
-            android:id="@+id/description"
-            style="@style/MyTheme.MovieDetail.Text.Description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            </RelativeLayout>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/description"
+                style="@style/MyTheme.MovieDetail.Text.Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-</ScrollView>
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

@@ -18,6 +18,10 @@ public class SearchMovieDetailActivity extends MovieDetailActivity {
 
         addMovieMenuItem.setVisible(true);
         removeMovieMenuItem.setVisible(false);
+        lendMovieMenuItem.setVisible(false);
+        movieReturnedMenuItem.setVisible(false);
+
+        updateOptionsMenu();
 
         return true;
     }
@@ -45,10 +49,10 @@ public class SearchMovieDetailActivity extends MovieDetailActivity {
                     public void run() {
                         movie.setId(null);
                         setMovie(movie);
-
-                        stopProgress();
                     }
                 });
+
+                stopProgress();
             }
         }.execute(getMovieIdFromIntent());
     }

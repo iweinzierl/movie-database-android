@@ -33,8 +33,11 @@
 
     <string name="moviedetail_menu_add_to_collection">Add to Collection</string>
     <string name="moviedetail_menu_remove_from_collection">Remove to Collection</string>
+    <string name="moviedetail_menu_lend_movie">Lend Movie</string>
+    <string name="moviedetail_menu_movie_returned">Movie returned (was lent)</string>
     <string name="moviedetail_save_movie_successful">Successfully saved movie: %s</string>
     <string name="moviedetail_delete_movie_successful">Successfully deleted movie: %s</string>
+    <string name="moviedetail_label_lent_movie_to">Movie is lent to: %s</string>
     <string name="moviedetail_progress_load_movie">Loading Movie</string>
     <string name="moviedetail_progress_add_movie_to_collection">Adding Movie to Collection</string>
     <string name="moviedetail_progress_remove_movie_from_collection">Removing Movie from Collection</string>
@@ -57,5 +60,6 @@
     <string name="task_get_genres_error_message">Unknown Error while fetching genres: %s</string>
     <string name="task_delete_movie_error_message">Unknown Error while deleting movie: %s</string>
     <string name="task_get_statistics_error_message">Unknown Error while fetching statistics: %s</string>
+    <string name="task_get_lent_movie_info_error_message">Unknown Error while getting information if movie is lent: %s</string>
 
 </resources>

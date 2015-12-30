@@ -36,6 +36,7 @@
     <string name="moviedetail_menu_remove_from_collection">Aus Sammlung Entfernen</string>
     <string name="moviedetail_save_movie_successful">Film erfolgreich zur Sammlung hinzugefügt: %s</string>
     <string name="moviedetail_delete_movie_successful">Film erfolgreich aus Sammlung entfernt: %s</string>
+    <string name="moviedetail_label_lent_movie_to">Film verliehen an: %s</string>
     <string name="moviedetail_progress_load_movie">Lade Film</string>
     <string name="moviedetail_progress_add_movie_to_collection">Füge Film zur Sammlung hinzu</string>
     <string name="moviedetail_progress_remove_movie_from_collection">Entferne Film aus der Sammlung</string>
@@ -58,4 +59,5 @@
     <string name="task_get_genres_error_message">Unbekannter Fehler beim Laden der Genre: %s</string>
     <string name="task_delete_movie_error_message">Unbekannter Fehler beim Entfernen des Films: %s</string>
     <string name="task_get_statistics_error_message">Unbekannter Fehler beim Laden der Statistiken: %s</string>
+    <string name="task_get_lent_movie_info_error_message">Unbekannter Fehler bei Abfrage ob Film verliehen ist: %s</string>
 </resources>

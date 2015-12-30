@@ -14,4 +14,16 @@
         android:title="@string/moviedetail_menu_remove_from_collection"
         tools:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/lend_movie"
+        android:icon="@drawable/ic_call_made_white_24dp"
+        android:title="@string/moviedetail_menu_lend_movie"
+        tools:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/movie_returned"
+        android:icon="@drawable/ic_call_received_white_24dp"
+        android:title="@string/moviedetail_menu_movie_returned"
+        tools:showAsAction="ifRoom" />
+
 </menu>
