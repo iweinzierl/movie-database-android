@@ -43,4 +43,12 @@ public interface BackendClient {
     @Headers({"Accept: application/json"})
     @GET("/api/lent/{id}")
     Call<LentMovieInfo> getLentMovieInfo(@Path("id") String movieId);
+
+    @Headers({"Accept: application/json"})
+    @POST("/api/lent")
+    Call<LentMovieInfo> lendMovie(@Body LentMovieInfo lentMovieInfo);
+
+    @Headers({"Accept: application/json"})
+    @DELETE("/api/lent/{id}")
+    Call<LentMovieInfo> movieReturned(@Path("id") String movieId);
 }

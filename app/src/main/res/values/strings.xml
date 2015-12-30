@@ -41,6 +41,8 @@
     <string name="moviedetail_progress_load_movie">Loading Movie</string>
     <string name="moviedetail_progress_add_movie_to_collection">Adding Movie to Collection</string>
     <string name="moviedetail_progress_remove_movie_from_collection">Removing Movie from Collection</string>
+    <string name="moviedetail_progress_lend_movie">Mark Movie as lent</string>
+    <string name="moviedetail_progress_remove_lent_movie_info">Mark Movie as returned</string>
 
     <string name="selectablegenrelist_title">Select Genres</string>
     <string name="selectablegenrelist_submit_button">Approve</string>
@@ -61,5 +63,7 @@
     <string name="task_delete_movie_error_message">Unknown Error while deleting movie: %s</string>
     <string name="task_get_statistics_error_message">Unknown Error while fetching statistics: %s</string>
     <string name="task_get_lent_movie_info_error_message">Unknown Error while getting information if movie is lent: %s</string>
+    <string name="task_lend_movie_error_message">Unknown Error while lending movie: %s</string>
+    <string name="task_lend_movie_delete_error_message">Unknown Error while removing lent movie info: %s</string>
 
 </resources>

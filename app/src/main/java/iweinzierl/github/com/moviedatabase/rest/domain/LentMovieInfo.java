@@ -1,12 +1,16 @@
 package iweinzierl.github.com.moviedatabase.rest.domain;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.joda.time.LocalDate;
 
 public class LentMovieInfo {
 
+    @SerializedName("movieId")
     private String movieId;
     private String person;
 
+    @SerializedName("lentDate")
     private LocalDate lentDate;
 
     public LentMovieInfo(String movieId, String person, LocalDate lentDate) {

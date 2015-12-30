@@ -64,6 +64,9 @@ public class MovieDetailFragment extends Fragment {
             lentMovieTo.setText(getString(R.string.moviedetail_label_lent_movie_to, lentMovieInfo.getPerson()));
             lentMovieTo.setVisibility(View.VISIBLE);
         }
+        else if (lentMovieInfo == null) {
+            lentMovieTo.setVisibility(View.GONE);
+        }
     }
 
     private void loadCover(ImageView coverView, String coverUri) {

@@ -40,6 +40,8 @@
     <string name="moviedetail_progress_load_movie">Lade Film</string>
     <string name="moviedetail_progress_add_movie_to_collection">Füge Film zur Sammlung hinzu</string>
     <string name="moviedetail_progress_remove_movie_from_collection">Entferne Film aus der Sammlung</string>
+    <string name="moviedetail_progress_lend_movie">Verleihe Film</string>
+    <string name="moviedetail_progress_remove_lent_movie_info">Entferne \'verliehen\' Status vom Film</string>
 
     <string name="selectablegenrelist_title">Genre auswählen</string>
     <string name="selectablegenrelist_submit_button">Übernehmen</string>
@@ -60,4 +62,6 @@
     <string name="task_delete_movie_error_message">Unbekannter Fehler beim Entfernen des Films: %s</string>
     <string name="task_get_statistics_error_message">Unbekannter Fehler beim Laden der Statistiken: %s</string>
     <string name="task_get_lent_movie_info_error_message">Unbekannter Fehler bei Abfrage ob Film verliehen ist: %s</string>
+    <string name="task_lend_movie_error_message">Unbekannter Fehler beim Verleihen des Films: %s</string>
+    <string name="task_lend_movie_delete_error_message">Unbekannter Fehler beim Entfernen des \'verliehen\' Status: %s</string>
 </resources>

@@ -9,11 +9,15 @@ import android.widget.Toast;
 
 import com.google.common.base.Strings;
 
+import org.joda.time.LocalDate;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
+import iweinzierl.github.com.moviedatabase.async.DeleteLentMovieInfoTask;
 import iweinzierl.github.com.moviedatabase.async.DeleteMovieTask;
 import iweinzierl.github.com.moviedatabase.async.GetLentMovieInfoTask;
 import iweinzierl.github.com.moviedatabase.async.GetMovieTask;
+import iweinzierl.github.com.moviedatabase.async.LendMovieTask;
 import iweinzierl.github.com.moviedatabase.fragment.MovieDetailFragment;
 import iweinzierl.github.com.moviedatabase.rest.domain.LentMovieInfo;
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
@@ -86,6 +90,12 @@ public class MovieDetailActivity extends BaseActivity {
         switch (item.getItemId()) {
             case R.id.remove_from_collection:
                 removeMovieFromCollection();
+                return true;
+            case R.id.lend_movie:
+                lendMovie();
+                return true;
+            case R.id.movie_returned:
+                movieReturned();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -230,13 +240,54 @@ public class MovieDetailActivity extends BaseActivity {
                     public void run() {
                         setMovie(movie);
 
-                        stopProgress();
                         notifySuccessfulDeletion();
                     }
                 });
+
+                stopProgress();
             }
         }.execute(getMovie().getId());
         finish();
+    }
+
+    private void lendMovie() {
+        startProgress(getString(R.string.moviedetail_progress_lend_movie));
+
+        new LendMovieTask(this) {
+            @Override
+            protected void onPostExecute(final LentMovieInfo lentMovieInfo) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        setLentMovieInfo(lentMovieInfo);
+                        notifySuccessfulLentMovie();
+                    }
+                });
+
+                stopProgress();
+            }
+        }.execute(new LentMovieInfo(movie.getId(), "Max Mustermann", LocalDate.now()));
+    }
+
+    private void movieReturned() {
+        startProgress(getString(R.string.moviedetail_progress_remove_lent_movie_info));
+
+        new DeleteLentMovieInfoTask(this) {
+            @Override
+            protected void onPostExecute(final LentMovieInfo lentMovieInfo) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (lentMovieInfo != null) {
+                            setLentMovieInfo(null);
+                            notifySuccessfulDeleteLentMovieInfo();
+                        }
+                    }
+                });
+
+                stopProgress();
+            }
+        }.execute(movie.getId());
     }
 
     private void notifySuccessfulDeletion() {
@@ -245,5 +296,13 @@ public class MovieDetailActivity extends BaseActivity {
                 getString(R.string.moviedetail_delete_movie_successful, getMovie().getTitle()),
                 Toast.LENGTH_SHORT)
                 .show();
+    }
+
+    private void notifySuccessfulLentMovie() {
+        // TODO
+    }
+
+    private void notifySuccessfulDeleteLentMovieInfo() {
+        // TODO
     }
 }
