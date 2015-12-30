@@ -65,11 +65,12 @@ public class SearchMovieDetailActivity extends MovieDetailActivity {
                         public void run() {
                             setMovie(movie);
 
-                            stopProgress();
                             notifySuccessfullPersistence();
                         }
                     });
                 }
+
+                stopProgress();
             }
         }.execute(getMovie());
     }
