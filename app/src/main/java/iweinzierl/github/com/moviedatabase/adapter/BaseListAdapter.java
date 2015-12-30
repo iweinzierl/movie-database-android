@@ -10,15 +10,23 @@ import java.util.List;
 
 public abstract class BaseListAdapter<T> extends BaseAdapter {
 
+    public interface Filter<T> {
+        List<T> performFilter(List<T> items, Object filterObj);
+    }
+
     protected final Context context;
+    protected List<T> origItems;
     protected List<T> items;
 
     protected Comparator<T> comparator;
+
+    protected Filter<T> filter;
 
     @SuppressWarnings("unchecked")
     public BaseListAdapter(final Context context, final List<T> items) {
         super();
         this.context = context;
+        this.origItems = items != null ? new ArrayList<>(items) : (List<T>) Collections.EMPTY_LIST;
         this.items = items != null ? new ArrayList<>(items) : (List<T>) Collections.EMPTY_LIST;
     }
 
@@ -26,6 +34,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
     public BaseListAdapter(final Context context, final List<T> items, Comparator<T> comparator) {
         super();
         this.context = context;
+        this.origItems = items != null ? new ArrayList<>(items) : (List<T>) Collections.EMPTY_LIST;
         this.items = items != null ? new ArrayList<>(items) : (List<T>) Collections.EMPTY_LIST;
         this.comparator = comparator;
 
@@ -34,6 +43,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
 
     @SuppressWarnings("unchecked")
     public void setItems(List<T> items) {
+        this.origItems = items != null ? new ArrayList<>(items) : (List<T>) Collections.EMPTY_LIST;
         this.items = items != null ? new ArrayList<>(items) : (List<T>) Collections.EMPTY_LIST;
 
         if (comparator != null) {
@@ -71,9 +81,21 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
         return items.indexOf(item);
     }
 
-    public void remove(final int i) {
-        if (i < getCount()) {
-            items.remove(i);
+    public void setFilter(Filter<T> filter) {
+        this.filter = filter;
+    }
+
+    public void filter(Object filterObj) {
+        if (filter != null) {
+            this.items = filter.performFilter(this.origItems, filterObj);
+            sort();
+            notifyDataSetChanged();
+        }
+    }
+
+    protected void sort() {
+        if (comparator != null) {
+            Collections.sort(this.items, comparator);
             notifyDataSetChanged();
         }
     }

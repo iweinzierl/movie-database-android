@@ -11,16 +11,19 @@ import com.google.common.base.Strings;
 
 import org.joda.time.LocalDate;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import iweinzierl.github.com.moviedatabase.async.DeleteLentMovieInfoTask;
 import iweinzierl.github.com.moviedatabase.async.DeleteMovieTask;
 import iweinzierl.github.com.moviedatabase.async.GetLentMovieInfoTask;
 import iweinzierl.github.com.moviedatabase.async.GetMovieTask;
+import iweinzierl.github.com.moviedatabase.async.GetPeopleTask;
 import iweinzierl.github.com.moviedatabase.async.LendMovieTask;
 import iweinzierl.github.com.moviedatabase.fragment.MovieDetailFragment;
 import iweinzierl.github.com.moviedatabase.rest.domain.LentMovieInfo;
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
+import iweinzierl.github.com.moviedatabase.util.PeopleNameSelectionDialog;
 
 public class MovieDetailActivity extends BaseActivity {
 
@@ -92,7 +95,7 @@ public class MovieDetailActivity extends BaseActivity {
                 removeMovieFromCollection();
                 return true;
             case R.id.lend_movie:
-                lendMovie();
+                startLendMovieProcess();
                 return true;
             case R.id.movie_returned:
                 movieReturned();
@@ -250,7 +253,39 @@ public class MovieDetailActivity extends BaseActivity {
         finish();
     }
 
-    private void lendMovie() {
+    private void startLendMovieProcess() {
+        startProgress(getString(R.string.moviedetail_progress_get_people));
+
+        new GetPeopleTask(this) {
+            @Override
+            protected void onPostExecute(final List<String> people) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        displayPeopleNameSelectionDialog(people);
+                    }
+                });
+
+                stopProgress();
+            }
+        }.execute();
+    }
+
+    private void displayPeopleNameSelectionDialog(List<String> people) {
+        new PeopleNameSelectionDialog(this, new PeopleNameSelectionDialog.Callback() {
+            @Override
+            public void onSubmit(String person) {
+                lendMovie(person);
+            }
+
+            @Override
+            public void onCancel() {
+                // nothing to do
+            }
+        }, people).show();
+    }
+
+    private void lendMovie(String person) {
         startProgress(getString(R.string.moviedetail_progress_lend_movie));
 
         new LendMovieTask(this) {
@@ -266,7 +301,7 @@ public class MovieDetailActivity extends BaseActivity {
 
                 stopProgress();
             }
-        }.execute(new LentMovieInfo(movie.getId(), "Max Mustermann", LocalDate.now()));
+        }.execute(new LentMovieInfo(movie.getId(), person, LocalDate.now()));
     }
 
     private void movieReturned() {
