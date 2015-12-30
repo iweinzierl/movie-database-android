@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.GestureDetector;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -21,6 +21,7 @@ import com.github.iweinzierl.android.logging.AndroidLoggerFactory;
 import org.slf4j.Logger;
 
 import iweinzierl.github.com.moviedatabase.navigation.NavigationAdapter;
+import iweinzierl.github.com.moviedatabase.rest.security.CredentialsStore;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -87,7 +88,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    drawerLayout.openDrawer(Gravity.LEFT);
+                    drawerLayout.openDrawer(GravityCompat.START);
                 }
             });
         }
@@ -105,7 +106,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private String getUsername() {
-        return "anonymous";
+        return new CredentialsStore(this).getCredentials().getUsername();
     }
 
     private String getVersionName() {
