@@ -1,37 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MyTheme.Statistics"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_gravity="center_horizontal">
 
     <TextView
-        android:layout_width="match_parent"
+        style="@style/MyTheme.Statistics.Text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="0"
         android:text="@string/dashboard_label_number_of_movies" />
 
     <TextView
         android:id="@+id/number_of_movies"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        style="@style/MyTheme.Statistics.Text.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="0" />
 
     <TextView
-        android:layout_width="match_parent"
+        style="@style/MyTheme.Statistics.Text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="1"
         android:text="@string/dashboard_label_number_of_genres" />
 
     <TextView
         android:id="@+id/number_of_genres"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        style="@style/MyTheme.Statistics.Text.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="1" />
 
     <TextView
-        android:layout_width="match_parent"
+        style="@style/MyTheme.Statistics.Text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="2"
         android:text="@string/dashboard_label_number_of_lent_movies" />
 
     <TextView
         android:id="@+id/number_of_lent_movies"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-</LinearLayout>
+        style="@style/MyTheme.Statistics.Text.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="2" />
+</GridLayout>
