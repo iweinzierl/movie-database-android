@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MyTheme.MovieFormatSelectionDialog"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/vhs"
+        style="@style/MyTheme.MovieFormatSelectionDialog.Button"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_movie_format_selection_vhs" />
+
+    <Button
+        android:id="@+id/dvd"
+        style="@style/MyTheme.MovieFormatSelectionDialog.Button"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_movie_format_selection_dvd" />
+
+    <Button
+        android:id="@+id/blu_ray"
+        style="@style/MyTheme.MovieFormatSelectionDialog.Button"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_movie_format_selection_blueray" />
+
+</LinearLayout>

@@ -9,6 +9,7 @@ import com.google.common.base.Strings;
 import iweinzierl.github.com.moviedatabase.async.GetSearchMovieTask;
 import iweinzierl.github.com.moviedatabase.async.SaveMovieTask;
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
+import iweinzierl.github.com.moviedatabase.util.MovieFormatSelectionDialog;
 
 public class SearchMovieDetailActivity extends MovieDetailActivity {
 
@@ -30,7 +31,7 @@ public class SearchMovieDetailActivity extends MovieDetailActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_to_collection:
-                addMovieToCollection();
+                startAddMovieToCollectionProcess();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -57,8 +58,19 @@ public class SearchMovieDetailActivity extends MovieDetailActivity {
         }.execute(getMovieIdFromIntent());
     }
 
-    private void addMovieToCollection() {
+    private void startAddMovieToCollectionProcess() {
+        new MovieFormatSelectionDialog(this, new MovieFormatSelectionDialog.Callback() {
+            @Override
+            public void onFormatSelected(String format) {
+                addMovieToCollection(format);
+            }
+        }).show();
+    }
+
+    private void addMovieToCollection(String formatInCollection) {
         startProgress(getString(R.string.moviedetail_progress_add_movie_to_collection));
+
+        getMovie().setFormatInCollection(formatInCollection);
 
         new SaveMovieTask(this) {
             @Override

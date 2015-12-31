@@ -72,4 +72,8 @@
     <string name="dialog_people_name_selection_submit_button">Submit</string>
     <string name="dialog_people_name_selection_cancel_button">Cancel</string>
     <string name="dialog_people_name_title">Enter Name</string>
+    <string name="dialog_movie_format_selection_title">Select Format</string>
+    <string name="dialog_movie_format_selection_dvd">DVD</string>
+    <string name="dialog_movie_format_selection_blueray">Blu-Ray</string>
+    <string name="dialog_movie_format_selection_vhs">VHS</string>
 </resources>

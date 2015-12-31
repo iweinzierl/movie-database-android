@@ -26,6 +26,9 @@ public class Movie {
 
     private LocalDate published;
 
+    @SerializedName("formatInCollection")
+    private String formatInCollection;
+
     public Movie(Movie movie) {
         this.id = movie.getId();
         this.title = movie.title;
@@ -99,5 +102,13 @@ public class Movie {
 
     public void setPublished(LocalDate published) {
         this.published = published;
+    }
+
+    public String getFormatInCollection() {
+        return formatInCollection;
+    }
+
+    public void setFormatInCollection(String formatInCollection) {
+        this.formatInCollection = formatInCollection;
     }
 }
