@@ -1,7 +1,9 @@
 package iweinzierl.github.com.moviedatabase;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -232,25 +234,41 @@ public class MovieDetailActivity extends BaseActivity {
     }
 
     private void removeMovieFromCollection() {
-        startProgress(getString(R.string.moviedetail_progress_remove_movie_from_collection));
-
-        new DeleteMovieTask(this) {
-            @Override
-            protected void onPostExecute(final Movie movie) {
-                super.onPostExecute(movie);
-                runOnUiThread(new Runnable() {
+        new AlertDialog.Builder(this)
+                .setPositiveButton(R.string.moviedetail_question_remove_movie_submit, new DialogInterface.OnClickListener() {
                     @Override
-                    public void run() {
-                        setMovie(movie);
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        startProgress(getString(R.string.moviedetail_progress_remove_movie_from_collection));
 
-                        notifySuccessfulDeletion();
+                        new DeleteMovieTask(MovieDetailActivity.this) {
+                            @Override
+                            protected void onPostExecute(final Movie movie) {
+                                super.onPostExecute(movie);
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        setMovie(movie);
+
+                                        notifySuccessfulDeletion();
+                                    }
+                                });
+
+                                stopProgress();
+                            }
+                        }.execute(getMovie().getId());
+                        finish();
                     }
-                });
-
-                stopProgress();
-            }
-        }.execute(getMovie().getId());
-        finish();
+                })
+                .setNegativeButton(R.string.moviedetail_question_remove_movie_cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setMessage(R.string.moviedetail_question_remove_movie_message)
+                .create()
+                .show();
     }
 
     private void startLendMovieProcess() {

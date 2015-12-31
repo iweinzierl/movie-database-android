@@ -43,6 +43,9 @@
     <string name="moviedetail_progress_lend_movie">Verleihe Film</string>
     <string name="moviedetail_progress_remove_lent_movie_info">Entferne \'verliehen\' Status vom Film</string>
     <string name="moviedetail_progress_get_people">Lade Personen Namen</string>
+    <string name="moviedetail_question_remove_movie_message">Wirklich aus der Sammlung entfernen?</string>
+    <string name="moviedetail_question_remove_movie_submit">Entfernen</string>
+    <string name="moviedetail_question_remove_movie_cancel">Abbrechen</string>
 
     <string name="selectablegenrelist_title">Genre auswählen</string>
     <string name="selectablegenrelist_submit_button">Übernehmen</string>
