@@ -6,5 +6,7 @@ import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
 
 public interface MovieListFilter {
 
+    boolean isActive();
+
     List<Movie> perform(List<Movie> movies);
 }

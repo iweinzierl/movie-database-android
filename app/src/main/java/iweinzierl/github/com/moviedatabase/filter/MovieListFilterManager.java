@@ -26,6 +26,15 @@ public class MovieListFilterManager implements MovieListFilter {
         return INSTANCE;
     }
 
+    @Override
+    public List<Movie> perform(List<Movie> movies) {
+        if (filters.isEmpty()) {
+            return movies;
+        }
+
+        return filterMovies(movies);
+    }
+
     @SuppressWarnings("unchecked")
     public void addOrReplaceFilter(MovieListFilter filter) {
         filters.put((Class<MovieListFilter>) filter.getClass(), filter);
@@ -36,12 +45,18 @@ public class MovieListFilterManager implements MovieListFilter {
     }
 
     @Override
-    public List<Movie> perform(List<Movie> movies) {
+    public boolean isActive() {
         if (filters.isEmpty()) {
-            return movies;
+            return false;
         }
 
-        return filterMovies(movies);
+        for (MovieListFilter filter : filters.values()) {
+            if (filter.isActive()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private List<Movie> filterMovies(List<Movie> movies) {

@@ -26,6 +26,7 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
     private List<Movie> movies;
 
     private MovieListFragment movieListFragment;
+    private MenuItem filterCollectionMenuItem;
 
     private Comparator<Movie> movieComparator;
     private MovieListFilterManager filterManager;
@@ -61,6 +62,13 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
     }
 
     @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+        displayFilterCollectionMenuItem(filterManager.isActive());
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -78,6 +86,9 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.activity_movie_list, menu);
+
+        filterCollectionMenuItem = menu.findItem(R.id.filter_collection);
+        displayFilterCollectionMenuItem(filterManager.isActive());
 
         return true;
     }
@@ -129,6 +140,16 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
             LOG.error("Unable to create instance of comparator class: {}", comparatorClassName, e);
         } catch (IllegalAccessException e) {
             LOG.error("Not allowed to create instance of comparator class: {}", comparatorClassName, e);
+        }
+    }
+
+    private void displayFilterCollectionMenuItem(boolean active) {
+        if (filterCollectionMenuItem != null) {
+            if (active) {
+                filterCollectionMenuItem.setIcon(getDrawable(R.drawable.ic_filter_list_white_24dp_enabled));
+            } else {
+                filterCollectionMenuItem.setIcon(getDrawable(R.drawable.ic_filter_list_white_24dp));
+            }
         }
     }
 

@@ -20,6 +20,11 @@ public class GenreFilter implements MovieListFilter {
     }
 
     @Override
+    public boolean isActive() {
+        return genres != null && !genres.isEmpty();
+    }
+
+    @Override
     public List<Movie> perform(List<Movie> movies) {
         if (genres == null || genres.isEmpty()) {
             return movies;
