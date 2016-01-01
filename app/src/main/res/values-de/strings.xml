@@ -34,6 +34,8 @@
 
     <string name="moviedetail_menu_add_to_collection">Zur Sammlung Hinzufügen</string>
     <string name="moviedetail_menu_remove_from_collection">Aus Sammlung Entfernen</string>
+    <string name="moviedetail_menu_lend_movie">Film verleihen</string>
+    <string name="moviedetail_menu_movie_returned">Film vom Verleih zurück</string>
     <string name="moviedetail_save_movie_successful">Film erfolgreich zur Sammlung hinzugefügt: %s</string>
     <string name="moviedetail_delete_movie_successful">Film erfolgreich aus Sammlung entfernt: %s</string>
     <string name="moviedetail_label_lent_movie_to">Film verliehen an: %s</string>
