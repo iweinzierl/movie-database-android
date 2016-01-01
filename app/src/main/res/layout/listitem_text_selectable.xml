@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/MyTheme.GenreFilterSelection.ListItem"
+    style="@style/MyTheme.MovieFilterManager.ListItem"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/checkbox"
-        style="@style/MyTheme.GenreFilterSelection.ListItem.Image"
+        style="@style/MyTheme.MovieFilterManager.ListItem.Image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/title"
-        style="@style/MyTheme.GenreFilterSelection.ListItem.Text"
+        style="@style/MyTheme.MovieFilterManager.ListItem.Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toStartOf="@id/checkbox" />

@@ -49,8 +49,12 @@
     <string name="moviedetail_question_remove_movie_submit">Remove</string>
     <string name="moviedetail_question_remove_movie_cancel">Cancel</string>
 
-    <string name="selectablegenrelist_title">Select Genres</string>
-    <string name="selectablegenrelist_submit_button">Approve</string>
+    <string name="moviefiltermanager_title">Set Filter</string>
+    <string name="moviefiltermanager_submit_button">Approve</string>
+    <string name="moviefiltermanager_genre_header">Genre Filter</string>
+    <string name="moviefiltermanager_format_header">Format Filter</string>
+    <string name="moviefiltermanager_selected_genres_count">(%s ausgewählt)</string>
+    <string name="moviefiltermanager_selected_formats_count">(%s ausgewählt)</string>
 
     <string name="moviecomparatorchoice_title">Select Order</string>
     <string name="moviecomparatorchoice_submit_button">Approve</string>

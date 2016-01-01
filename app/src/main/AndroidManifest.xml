@@ -32,8 +32,8 @@
         <activity android:name=".MovieDetailActivity" />
         <activity android:name=".SearchMovieDetailActivity" />
         <activity
-            android:name=".FilterManagerActivity"
-            android:label="@string/selectablegenrelist_title" />
+            android:name=".MovieFilterManagerActivity"
+            android:label="@string/moviefiltermanager_title" />
         <activity
             android:name=".MovieComparatorChoiceActivity"
             android:label="@string/moviecomparatorchoice_title" />

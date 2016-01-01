@@ -200,18 +200,34 @@
         <item name="android:paddingBottom">10dp</item>
     </style>
 
-    <style name="MyTheme.GenreFilterSelection"></style>
+    <style name="MyTheme.MovieFilterManager"></style>
 
-    <style name="MyTheme.GenreFilterSelection.ListItem">
+    <style name="MyTheme.MovieFilterManager.Section">
+        <item name="android:layout_marginBottom">1dp</item>
+    </style>
+
+    <style name="MyTheme.MovieFilterManager.Section.Header">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
+    <style name="MyTheme.MovieFilterManager.Section.Header.Text">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorGreyDark</item>
+    </style>
+
+    <style name="MyTheme.MovieFilterManager.ListItem">
         <item name="android:paddingLeft">16dp</item>
     </style>
 
-    <style name="MyTheme.GenreFilterSelection.ListItem.Image">
+    <style name="MyTheme.MovieFilterManager.ListItem.Image">
         <item name="android:paddingRight">16dp</item>
         <item name="android:paddingTop">8dp</item>
     </style>
 
-    <style name="MyTheme.GenreFilterSelection.ListItem.Text">
+    <style name="MyTheme.MovieFilterManager.ListItem.Text">
         <item name="android:textSize">16sp</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>

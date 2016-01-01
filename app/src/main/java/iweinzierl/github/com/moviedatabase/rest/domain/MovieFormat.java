@@ -15,4 +15,14 @@ public enum MovieFormat {
     public String title() {
         return title;
     }
+
+    public static MovieFormat fromTitle(String title) {
+        for (MovieFormat format : values()) {
+            if (format.title().equals(title)) {
+                return format;
+            }
+        }
+
+        return null;
+    }
 }

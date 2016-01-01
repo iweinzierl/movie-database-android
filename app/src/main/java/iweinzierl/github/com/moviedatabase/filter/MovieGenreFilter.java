@@ -11,11 +11,11 @@ import java.util.Set;
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
 import iweinzierl.github.com.moviedatabase.util.CollectionUtils;
 
-public class GenreFilter implements MovieListFilter {
+public class MovieGenreFilter implements MovieListFilter {
 
     private final Set<String> genres;
 
-    public GenreFilter(Set<String> genres) {
+    public MovieGenreFilter(Set<String> genres) {
         this.genres = genres;
     }
 

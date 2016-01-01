@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/submit"
+        style="@style/MyTheme.Toolbar"
+        android:layout_alignParentBottom="true"
+        android:text="@string/moviefiltermanager_submit_button" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/submit"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_top"
+            style="@style/MyTheme.Toolbar" />
+
+        <LinearLayout
+            style="@style/MyTheme.MovieFilterManager.Section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/genre_section_header"
+                style="@style/MyTheme.MovieFilterManager.Section.Header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/genre_label"
+                    style="@style/MyTheme.MovieFilterManager.Section.Header.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/moviefiltermanager_genre_header" />
+
+                <TextView
+                    android:id="@+id/genre_filter_count"
+                    style="@style/MyTheme.MovieFilterManager.Section.Header.Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/genre_label" />
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/genre_filter_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <FrameLayout
+                    android:id="@+id/genre_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MyTheme.MovieFilterManager.Section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/format_section_header"
+                style="@style/MyTheme.MovieFilterManager.Section.Header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/format_label"
+                    style="@style/MyTheme.MovieFilterManager.Section.Header.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/moviefiltermanager_format_header" />
+
+                <TextView
+                    android:id="@+id/format_filter_count"
+                    style="@style/MyTheme.MovieFilterManager.Section.Header.Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/format_label" />
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/format_filter_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <FrameLayout
+                    android:id="@+id/format_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

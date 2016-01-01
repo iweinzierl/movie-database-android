@@ -8,19 +8,19 @@ import java.util.Map;
 
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
 
-public class MovieListFilterManager implements MovieListFilter {
+public class MovieFilterManager implements MovieListFilter {
 
-    private static MovieListFilterManager INSTANCE;
+    private static MovieFilterManager INSTANCE;
 
     private Map<Class<MovieListFilter>, MovieListFilter> filters;
 
-    private MovieListFilterManager() {
+    private MovieFilterManager() {
         filters = new HashMap<>();
     }
 
-    public static MovieListFilterManager getInstance() {
+    public static MovieFilterManager getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new MovieListFilterManager();
+            INSTANCE = new MovieFilterManager();
         }
 
         return INSTANCE;

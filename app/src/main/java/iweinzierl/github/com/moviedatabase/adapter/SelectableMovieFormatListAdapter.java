@@ -10,20 +10,20 @@ import android.widget.TextView;
 import com.github.iweinzierl.android.utils.UiUtils;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import iweinzierl.github.com.moviedatabase.R;
+import iweinzierl.github.com.moviedatabase.rest.domain.MovieFormat;
 
-public class SelectableGenreListAdapter extends BaseListAdapter<String> {
+public class SelectableMovieFormatListAdapter extends BaseListAdapter<MovieFormat> {
 
-    private static class GenreComparator implements Comparator<String> {
+    private static class MovieFormatComparator implements Comparator<MovieFormat> {
         @Override
-        public int compare(String one, String two) {
-            return one.compareTo(two);
+        public int compare(MovieFormat one, MovieFormat two) {
+            return one.title().compareTo(two.title());
         }
     }
 
@@ -35,13 +35,15 @@ public class SelectableGenreListAdapter extends BaseListAdapter<String> {
     private boolean[] checked;
 
     @SuppressWarnings("unchecked")
-    public SelectableGenreListAdapter(Context context) {
-        super(context, Collections.EMPTY_LIST, new GenreComparator());
+    public SelectableMovieFormatListAdapter(Context context) {
+        super(context, Arrays.asList(MovieFormat.values()), new MovieFormatComparator());
+        checked = new boolean[items.size()];
+        Arrays.fill(checked, false);
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        String genre = getTypedItem(i);
+        MovieFormat format = getTypedItem(i);
         boolean isChecked = isChecked(i);
 
         if (view == null) {
@@ -55,26 +57,26 @@ public class SelectableGenreListAdapter extends BaseListAdapter<String> {
             holder.checkbox = checkbox;
             holder.title = title;
 
-            fill(holder, genre, isChecked);
+            fill(holder, format, isChecked);
 
             view.setTag(holder);
         } else {
             ViewHolder holder = (ViewHolder) view.getTag();
-            fill(holder, genre, isChecked);
+            fill(holder, format, isChecked);
         }
 
         return view;
     }
 
     @Override
-    public void setItems(List<String> items) {
+    public void setItems(List<MovieFormat> items) {
         super.setItems(items);
         checked = new boolean[items.size()];
         Arrays.fill(checked, false);
     }
 
-    private void fill(ViewHolder holder, String genre, boolean checked) {
-        holder.title.setText(genre);
+    private void fill(ViewHolder holder, MovieFormat format, boolean checked) {
+        holder.title.setText(format.title());
         if (checked) {
             holder.checkbox.setVisibility(View.VISIBLE);
         } else {
@@ -91,15 +93,15 @@ public class SelectableGenreListAdapter extends BaseListAdapter<String> {
         notifyDataSetChanged();
     }
 
-    public Set<String> getSelectedGenres() {
-        Set<String> genres = new HashSet<>();
+    public Set<MovieFormat> getSelectedFormats() {
+        Set<MovieFormat> formats = new HashSet<>();
 
         for (int i = 0; i < getCount(); i++) {
             if (isChecked(i)) {
-                genres.add(getTypedItem(i));
+                formats.add(getTypedItem(i));
             }
         }
 
-        return genres;
+        return formats;
     }
 }

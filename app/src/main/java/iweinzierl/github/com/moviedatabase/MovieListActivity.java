@@ -14,7 +14,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import iweinzierl.github.com.moviedatabase.async.GetMoviesTask;
-import iweinzierl.github.com.moviedatabase.filter.MovieListFilterManager;
+import iweinzierl.github.com.moviedatabase.filter.MovieFilterManager;
 import iweinzierl.github.com.moviedatabase.fragment.MovieListFragment;
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
 import iweinzierl.github.com.moviedatabase.util.MovieTitleAscendingComparator;
@@ -29,7 +29,7 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
     private MenuItem filterCollectionMenuItem;
 
     private Comparator<Movie> movieComparator;
-    private MovieListFilterManager filterManager;
+    private MovieFilterManager filterManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
 
         movieListFragment = new MovieListFragment();
         movieComparator = new MovieTitleAscendingComparator();
-        filterManager = MovieListFilterManager.getInstance();
+        filterManager = MovieFilterManager.getInstance();
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -161,7 +161,7 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
     }
 
     private void showFilterManagerActivity() {
-        Intent intent = new Intent(this, FilterManagerActivity.class);
+        Intent intent = new Intent(this, MovieFilterManagerActivity.class);
         startActivity(intent);
     }
 
