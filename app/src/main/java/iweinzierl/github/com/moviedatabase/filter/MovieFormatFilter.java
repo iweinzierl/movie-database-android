@@ -26,6 +26,10 @@ public class MovieFormatFilter implements MovieListFilter {
 
     @Override
     public List<Movie> perform(List<Movie> movies) {
+        if (formats == null || formats.isEmpty()) {
+            return movies;
+        }
+
         return new ArrayList<>(Collections2.filter(movies, new Predicate<Movie>() {
             @Override
             public boolean apply(Movie input) {

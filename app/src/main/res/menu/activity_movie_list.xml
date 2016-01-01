@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/search_movie"
+        android:icon="@drawable/ic_search_white_24dp"
+        android:title="@string/movielist_menu_search_movie"
+        tools:actionViewClass="android.support.v7.widget.SearchView"
+        tools:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/sort_collection"
         android:icon="@drawable/ic_sort_white_24dp"
         android:title="@string/movielist_menu_sort_collection"

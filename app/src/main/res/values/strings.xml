@@ -25,6 +25,7 @@
     <string name="movielist_title">Collection</string>
     <string name="movielist_menu_sort_collection">Sort</string>
     <string name="movielist_menu_filter_collection">Filter</string>
+    <string name="movielist_menu_search_movie">Search</string>
     <string name="movielist_progress_load_movies">Loading Movie Collection</string>
 
     <string name="moviesearch_title">Movie Search</string>
