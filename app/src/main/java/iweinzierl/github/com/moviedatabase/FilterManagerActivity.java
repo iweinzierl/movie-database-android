@@ -1,6 +1,5 @@
 package iweinzierl.github.com.moviedatabase;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,17 +7,18 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.Set;
 
 import iweinzierl.github.com.moviedatabase.async.GetGenresTask;
+import iweinzierl.github.com.moviedatabase.filter.GenreFilter;
+import iweinzierl.github.com.moviedatabase.filter.MovieListFilter;
+import iweinzierl.github.com.moviedatabase.filter.MovieListFilterManager;
 import iweinzierl.github.com.moviedatabase.fragment.SelectableGenreListFragment;
 
-public class SelectableGenreListActivity extends AppCompatActivity {
+public class FilterManagerActivity extends AppCompatActivity {
 
-    public static final int REQUEST_GENRES = 100;
-
-    public static final String EXTRA_SELECTED_GENRES = "selectablegenrelist.extra.genres";
+    private MovieListFilterManager filterManager;
 
     private SelectableGenreListFragment selectableGenreListFragment;
 
@@ -27,6 +27,7 @@ public class SelectableGenreListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectable_genre_list);
 
+        filterManager = MovieListFilterManager.getInstance();
         selectableGenreListFragment = new SelectableGenreListFragment();
 
         Toolbar toolbarTop = (Toolbar) findViewById(R.id.toolbar_top);
@@ -64,19 +65,21 @@ public class SelectableGenreListActivity extends AppCompatActivity {
     }
 
     private void applyInitialCheckedGenres() {
-        Intent intent = getIntent();
-        List<String> checkedGenres = intent.getStringArrayListExtra(EXTRA_SELECTED_GENRES);
-
-        selectableGenreListFragment.setSelectedGenres(checkedGenres);
+        Collection<MovieListFilter> filters = filterManager.getFilters();
+        for (MovieListFilter filter : filters) {
+            if (filter instanceof GenreFilter) {
+                GenreFilter genreFilter = (GenreFilter) filter;
+                selectableGenreListFragment.setSelectedGenres(new ArrayList<>(genreFilter.getGenres()));
+            }
+        }
     }
 
     private void submitGenres() {
         Set<String> genres = selectableGenreListFragment.getSelectedGenres();
 
-        Intent data = new Intent();
-        data.putStringArrayListExtra(EXTRA_SELECTED_GENRES, new ArrayList<>(genres));
+        GenreFilter genreFilter = new GenreFilter(genres);
+        filterManager.addOrReplaceFilter(genreFilter);
 
-        setResult(RESULT_OK, data);
         finish();
     }
 }

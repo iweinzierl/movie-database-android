@@ -7,21 +7,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.github.iweinzierl.android.logging.AndroidLoggerFactory;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
 
 import org.slf4j.Logger;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 
 import iweinzierl.github.com.moviedatabase.async.GetMoviesTask;
+import iweinzierl.github.com.moviedatabase.filter.MovieListFilterManager;
 import iweinzierl.github.com.moviedatabase.fragment.MovieListFragment;
 import iweinzierl.github.com.moviedatabase.rest.domain.Movie;
-import iweinzierl.github.com.moviedatabase.util.CollectionUtils;
 import iweinzierl.github.com.moviedatabase.util.MovieTitleAscendingComparator;
 
 public class MovieListActivity extends BaseActivity implements MovieListFragment.Callback {
@@ -33,7 +28,7 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
     private MovieListFragment movieListFragment;
 
     private Comparator<Movie> movieComparator;
-    private List<String> genresFilter;
+    private MovieListFilterManager filterManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +36,7 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
 
         movieListFragment = new MovieListFragment();
         movieComparator = new MovieTitleAscendingComparator();
+        filterManager = MovieListFilterManager.getInstance();
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -70,9 +66,6 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
 
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
-                case SelectableGenreListActivity.REQUEST_GENRES:
-                    setGenresFilter(data.getStringArrayListExtra(SelectableGenreListActivity.EXTRA_SELECTED_GENRES));
-                    break;
                 case MovieComparatorChoiceActivity.REQUEST_COMPARATOR:
                     setMovieComparator(data.getStringExtra(MovieComparatorChoiceActivity.EXTRA_SELECTED_COMPARATOR));
             }
@@ -96,7 +89,7 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
                 showSortCollectionOptions();
                 return true;
             case R.id.filter_collection:
-                showFilterCollectionOptions();
+                showFilterManagerActivity();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -123,10 +116,6 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
         applyFilterAndComparator();
     }
 
-    public void setGenresFilter(ArrayList<String> filter) {
-        this.genresFilter = filter;
-    }
-
     @SuppressWarnings("unchecked")
     public void setMovieComparator(String comparatorClassName) {
         try {
@@ -150,11 +139,9 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
         startActivityForResult(intent, MovieComparatorChoiceActivity.REQUEST_COMPARATOR);
     }
 
-    private void showFilterCollectionOptions() {
-        Intent intent = new Intent(this, SelectableGenreListActivity.class);
-        intent.putStringArrayListExtra(SelectableGenreListActivity.EXTRA_SELECTED_GENRES, (ArrayList<String>) genresFilter);
-
-        startActivityForResult(intent, SelectableGenreListActivity.REQUEST_GENRES);
+    private void showFilterManagerActivity() {
+        Intent intent = new Intent(this, FilterManagerActivity.class);
+        startActivity(intent);
     }
 
     private void applyFilterAndComparator() {
@@ -162,18 +149,6 @@ public class MovieListActivity extends BaseActivity implements MovieListFragment
     }
 
     private List<Movie> filterMovies() {
-        if (genresFilter == null || genresFilter.isEmpty()) {
-            return movies;
-        }
-
-        Collection<Movie> filteredMovies = Collections2.filter(movies, new Predicate<Movie>() {
-            @Override
-            public boolean apply(Movie input) {
-                Set<String> intersection = CollectionUtils.extractIntersection(genresFilter, input.getGenres());
-                return !intersection.isEmpty();
-            }
-        });
-
-        return new ArrayList<>(filteredMovies);
+        return filterManager.perform(movies);
     }
 }

@@ -1,12 +1,11 @@
 package iweinzierl.github.com.moviedatabase.util;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class CollectionUtils {
 
-    public static <T> Set<T> extractIntersection(List<T> left, Set<T> right) {
+    public static <T> Set<T> extractIntersection(Set<T> left, Set<T> right) {
         Set<T> intersection = new HashSet<>();
 
         for (T itemLeft : left) {
