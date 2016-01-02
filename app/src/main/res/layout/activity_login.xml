@@ -36,6 +36,7 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/username"
+                    style="@style/MyTheme.Widget.Text.Medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/login_prompt_username"
@@ -51,6 +52,7 @@
 
                 <EditText
                     android:id="@+id/password"
+                    style="@style/MyTheme.Widget.EditText.Medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/login_prompt_password"
@@ -65,13 +67,14 @@
 
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/remember_me"
+                style="@style/MyTheme.Widget.Text.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login_store_credentials" />
 
             <Button
                 android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
+                style="@style/MyTheme.Widget.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
